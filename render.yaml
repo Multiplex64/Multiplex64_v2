@@ -2,7 +2,7 @@ databases:
   - name: multiplex64db
     plan: free
     databaseName: multiplex64
-    user: multiplex64
+    user: multiplex64db_user
 
 services:
   - type: web
