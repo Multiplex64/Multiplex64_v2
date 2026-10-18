@@ -1,3 +1,11 @@
 # Django-Test
 
-When initializing, run `python manage.py migrate` to set up the system.
+test and learn Django stuff
+
+
+Dev Notes:
+To Initialize:
+```
+python manage.py migrate
+python manage.py createsuperuser
+```
