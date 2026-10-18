@@ -19,9 +19,8 @@ ENV/
 env.bak/
 venv.bak/
 
-# Visual Studio Code
-.vscode/
-
 # System Files
+.git/
+.vscode/
 .DS_Store
 Thumbs.db
