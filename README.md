@@ -6,6 +6,7 @@ test and learn Django stuff
 Dev Notes:
 To Initialize:
 ```
+python manage.py collectstatic --no-input
 python manage.py migrate
 python manage.py createsuperuser
 ```
