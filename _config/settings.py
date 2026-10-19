@@ -21,12 +21,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-b(z!erat7rc78eli61=urb%rytomy7bzbh6p!3gla_5cb1ip3("
+SECRET_KEY = os.environ.get(
+    "DJANGO_SECRET_KEY",
+    "django-insecure-b(z!erat7rc78eli61=urb%rytomy7bzbh6p!3gla_5cb1ip3(",
+)
 
-DEBUG = os.getenv("DEBUG", False)
+DEBUG = os.getenv("DJANGO_DEBUG", False)
 
 # Set allowed hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '127.0.0.1,localhost,[::1]').split(',')
 
 
 # Application definition
@@ -120,8 +123,8 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     BASE_DIR / "_static",
 ]
-STATIC_ROOT = BASE_DIR / 'static_collected'
-WHITENOISE_ROOT = BASE_DIR / 'static_root'
+STATIC_ROOT = BASE_DIR / "static_collected"
+WHITENOISE_ROOT = BASE_DIR / "static_root"
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
