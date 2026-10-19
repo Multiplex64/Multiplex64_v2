@@ -15,10 +15,30 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+from django.conf import settings
+from django.http import Http404
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
+from django.views.static import serve
+import os
+
+def static_root(request, path):
+    """
+    Serves files from _static/root/ during development 
+    """
+    document_root = os.path.join(settings.STATIC_ROOT, "root")
+    
+    # Fallback to local static directory during development if _static isn't collected yet
+    if not os.path.exists(document_root) and settings.DEBUG:
+        document_root = os.path.join(settings.BASE_DIR, "_static_root/")
+        
+    try:
+        return serve(request, path, document_root=document_root)
+    except Http404:
+        raise Http404("File not found at root.")
 
 urlpatterns = [
     path("api/administration/", admin.site.urls),
     path("", include("homepage.urls")),
+    re_path(r'^(?P<path>[\w\-]+\.[a-zA-Z0-9]+)$', static_root),
 ]
