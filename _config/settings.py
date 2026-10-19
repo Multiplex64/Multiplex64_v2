@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-b(z!erat7rc78eli61=urb%rytomy7bzbh6p!3gla_5cb1ip3(
 DEBUG = os.getenv("DEBUG", False)
 
 # Set allowed hosts
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "[::1]"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -55,10 +55,11 @@ ROOT_URLCONF = "_config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "_templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
+                "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
@@ -119,6 +120,7 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     BASE_DIR / "_static",
 ]
+STATIC_ROOT = BASE_DIR / '_staticroot'
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
