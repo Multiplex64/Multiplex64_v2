@@ -13,8 +13,7 @@ static_collected/
 # Environments
 .env
 .envrc
-.venv_dev
-.venv_prod
+.venv
 env/
 venv/
 ENV/
