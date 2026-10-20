@@ -1,9 +1,9 @@
 Dev Notes:
 To Initialize:
 ```
-sh entrypoint.sh
+sh deploy.sh
 ```
-set allowed hosts in _config/settings.py
+set variables in .env
 
 
 Create superuser:
