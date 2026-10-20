@@ -1,7 +1,5 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[codz]
-*$py.class
 
 # Django stuff:
 *.log
@@ -9,16 +7,11 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 static_collected/
+_media/
 
 # Environments
 .env
-.envrc
 .venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
 
 # System Files
 .git/
