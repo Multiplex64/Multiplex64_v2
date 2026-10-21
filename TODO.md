@@ -1,3 +1,7 @@
 # TODO
 
-Move admin path to secret one based on .env
+Create automatic server update script
+
+Blog system
+
+Import tools
