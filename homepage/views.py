@@ -1,5 +1,4 @@
-from django.http import HttpResponse
-
+from django.shortcuts import render
 
 def index(request):
-    return HttpResponse("Hello, world! Welcome to a new chapter for Multiplex64.")
+    return render(request, 'homepage/index.html')

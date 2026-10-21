@@ -9,7 +9,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site-name" content="Multiplex64">
     <meta property="og:image" content="https://multiplex64.pythonanywhere.com/static/logo.png">
-    <!-- {{metacontent}} -->
+    <title>{% block title %}Multiplex64{% endblock %}</title>
 
     <link rel="stylesheet" type="text/css" href="/static/style.css">
     <script type="text/javascript" src="/static/script.js" defer></script>
@@ -27,6 +27,7 @@
 
 <body>
     <nav>
+        Multiplex64
     </nav>
     <main id="__main">
         {% block content %}
