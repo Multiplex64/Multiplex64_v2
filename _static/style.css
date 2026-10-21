@@ -1,1 +1,32 @@
+:root {
+    --font-body: "Courier New", monospace;
+}
 
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    position: fixed;
+    top: 32px;
+    bottom: 0;
+    right: 0;
+    padding: 0;
+    transition: left 0.5s;
+    left: 0;
+    overflow-y: scroll;
+}
+
+._leftbar main {
+    left: 256px;
+}
+
+/*
+@media (max-width: 768px) {
+  :root {
+    
+  }
+}
+*/
