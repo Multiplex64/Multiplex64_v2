@@ -39,6 +39,7 @@ def static_root(request, path):
 urlpatterns = [
     # General Directories
     path("", include("homepage.urls")),
+    path("tools/", include("tools.urls")),
     # System/secret directories
     path(secret_dir + "admin/", admin.site.urls),
     # Static file system, should be bypassed in production
