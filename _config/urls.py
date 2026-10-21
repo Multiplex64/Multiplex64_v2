@@ -22,6 +22,7 @@ from django.urls import include, path, re_path
 from django.views.static import serve
 import os
 
+secret_dir = os.environ.get('SECRET_DIR', 'null/')
 
 def static_root(request, path):
     """
@@ -32,13 +33,15 @@ def static_root(request, path):
     try:
         return serve(request, path, document_root=document_root)
     except Http404:
-        raise Http404("File not found at root.")
+        raise Http404("File not found.")
 
 
 urlpatterns = [
-    path("api/administration/", admin.site.urls),
+    # General Directories
     path("", include("homepage.urls")),
-    # static file system, should be bypassed in production
+    # System/secret directories
+    path(secret_dir + "admin/", admin.site.urls),
+    # Static file system, should be bypassed in production
     re_path(
         r"^static/(?P<path>[\w\-]+\.[a-zA-Z0-9]+)$",
         serve,
