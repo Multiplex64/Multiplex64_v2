@@ -21,8 +21,8 @@ from django.contrib import admin
 from django.urls import include, path, re_path
 from django.views.static import serve
 from django.contrib.sitemaps.views import sitemap
-from homepage.sitemaps import homepage_sitemap
-from tools.sitemaps import tools_sitemap
+from apps.homepage.sitemaps import homepage_sitemap
+from apps.tools.sitemaps import tools_sitemap
 
 import os
 
@@ -48,8 +48,8 @@ sitemaps = {
 
 urlpatterns = [
     # General Directories
-    path("", include("homepage.urls")),
-    path("tools/", include("tools.urls")),
+    path("", include("apps.homepage.urls")),
+    path("tools/", include("apps.tools.urls")),
     path(
         "sitemap.xml",
         sitemap,
