@@ -97,7 +97,7 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     BASE_DIR / "_static",
 ]
-STATIC_ROOT = BASE_DIR / "__static_collected"
+STATIC_ROOT = BASE_DIR / "__staticfiles"
 WHITENOISE_ROOT = BASE_DIR / "static_root"
 STORAGES = {
     "default": {
