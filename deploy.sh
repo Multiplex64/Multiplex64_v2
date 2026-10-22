@@ -1,4 +1,4 @@
-git pull origin main
+# git pull origin main
 pip install -r requirements.txt
 python manage.py collectstatic --noinput
 python manage.py migrate --noinput

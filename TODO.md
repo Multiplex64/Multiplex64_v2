@@ -6,8 +6,11 @@ Blog system
 
 Import tools
 
-Dynamic XML Sitemap
-
 User Accounts?
 
 External Site Support
+
+Set hostname through env or other global variable?
+- sitemaps
+- robots.txt
+- base.html

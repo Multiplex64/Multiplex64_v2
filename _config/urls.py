@@ -20,9 +20,13 @@ from django.http import Http404
 from django.contrib import admin
 from django.urls import include, path, re_path
 from django.views.static import serve
+from django.contrib.sitemaps.views import sitemap
+from homepage.sitemaps import homepage_sitemap
+
 import os
 
-secret_dir = os.environ.get('SECRET_DIR', 'null/')
+secret_dir = os.environ.get("SECRET_DIR", "null/")
+
 
 def static_root(request, path):
     """
@@ -36,10 +40,20 @@ def static_root(request, path):
         raise Http404("File not found.")
 
 
+sitemaps = {
+    "homepage": homepage_sitemap
+}
+
 urlpatterns = [
     # General Directories
     path("", include("homepage.urls")),
     path("tools/", include("tools.urls")),
+    path(
+        "sitemap.xml",
+        sitemap,
+        {"sitemaps": sitemaps},
+        name="django.contrib.sitemaps.views.sitemap",
+    ),
     # System/secret directories
     path(secret_dir + "admin/", admin.site.urls),
     # Static file system, should be bypassed in production
