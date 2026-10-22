@@ -14,3 +14,5 @@ Set hostname through env or other global variable?
 - sitemaps
 - robots.txt
 - base.html
+
+adjustable size sidebar
