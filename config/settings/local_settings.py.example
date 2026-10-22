@@ -1,0 +1,16 @@
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db" / "db.sqlite3",  # Keep it in a dedicated folder
+        "TIMEOUT": 20,  # Prevent immediate timeouts when locked
+        "OPTIONS": {
+            "init_command": (
+                "PRAGMA journal_mode=WAL;"       # Enable concurrent reads during writes
+                "PRAGMA synchronous=NORMAL;"     # Faster writes, completely safe with WAL
+                "PRAGMA busy_timeout=5000;"      # Sleep and retry for up to 5s if locked
+                "PRAGMA foreign_keys=ON;"        # Enforce foreign key constraints
+            ),
+            "transaction_mode": "IMMEDIATE",     # Prevents deadlocks by locking early
+        },
+    }
+}

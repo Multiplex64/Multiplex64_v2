@@ -8,3 +8,8 @@ if ENVIRONMENT == "dev":
     from .dev import *
 else:
     from .prod import *
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass

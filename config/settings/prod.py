@@ -19,10 +19,3 @@ ALLOWED_HOSTS = get_env_variable("ALLOWED_HOSTS").split(",")
 
 # Keep the secret key used in production inside .env!
 SECRET_KEY = get_env_variable("SECRET_KEY")
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "_data" / "db.sqlite3",
-    }
-}
