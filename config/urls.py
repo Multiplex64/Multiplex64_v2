@@ -1,5 +1,5 @@
 """
-URL configuration for _config project.
+URL configuration for config project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/6.1/topics/http/urls/
@@ -31,9 +31,9 @@ secret_dir = os.environ.get("SECRET_DIR", "null/")
 
 def static_root(request, path):
     """
-    Serves files from _static/root/ during development
+    Serves files from static/root/ during development
     """
-    document_root = os.path.join(settings.BASE_DIR, "_static_root/")
+    document_root = os.path.join(settings.BASE_DIR, "static_root/")
 
     try:
         return serve(request, path, document_root=document_root)
@@ -59,10 +59,5 @@ urlpatterns = [
     # System/secret directories
     path(secret_dir + "admin/", admin.site.urls),
     # Static file system, should be bypassed in production
-    re_path(
-        r"^static/(?P<path>[\w\-]+\.[a-zA-Z0-9]+)$",
-        serve,
-        {"document_root": settings.BASE_DIR / "_static"},
-    ),
     re_path(r"^(?P<path>[\w\-]+\.[a-zA-Z0-9]+)$", static_root),
 ]
