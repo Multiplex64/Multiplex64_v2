@@ -1,18 +1,16 @@
 # TODO
 
-Create automatic server update script
+## To Do
+- [ ] Blog System
+- [ ] External sites
+- [ ] User Accounts
+- [ ] Adjustable sidebar
 
-Blog system
+## In Progress
+- [ ] Import tools
+- [ ] Set hostname through env or other global variable? (sitemaps, robots.txt, base.html, etc)
+- [ ] Server Update Script
 
-Import tools
+## Done
+- [x] rearrange TODO
 
-User Accounts?
-
-External Site Support
-
-Set hostname through env or other global variable?
-- sitemaps
-- robots.txt
-- base.html
-
-adjustable size sidebar
