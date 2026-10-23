@@ -30,7 +30,10 @@
         <a href="/">Multiplex64</a>
         <button class="_leftbar-toggle">toggle sidebar</button>
     </nav>
-    <main id="__main">{% block content %} {% endblock %}</main>
+    <main id="__main">
+        {% block content %} {% endblock %}
+        {% block script %} {% endblock %}
+    </main>
 </body>
 
 </html>
