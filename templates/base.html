@@ -27,10 +27,27 @@
 
 <body>
     <nav>
-        <a href="/">Multiplex64</a>
-        <button class="_leftbar-toggle">toggle sidebar</button>
+        <div id="_topbar">
+            <a href="#_main" id="_skipcontent" class="_topbutton _topbutton-left _normal">Skip to Main Content</a>
+            <button class="_leftbar-toggle _topbutton _topbutton-left" aria-label="Toggle Navbar">
+                <b>&equiv;</b>
+            </button>
+            <a href="/" id="_homeButton" class="_topbutton _topbutton-left" aria-label="Home">
+                Multiplex64
+            </a>
+            <input placeholder="Search..." id="_search" aria-label="Search" style="display:none;">
+        </div>
+        <div id="_leftbar">
+            <a href="/">Multiplex64 Home</a>
+            <br>
+            <a href="javascript:window.location.reload();">Reload Site</a>
+            <br>
+            <a href="javascript:_fullscreen();">Fullscreen Toggle</a>
+            <br>
+            <a href="https://forms.gle/JoTMLmqSd6QU7SZJ6">Feedback/Bug Reporting</a>
+        </div>
     </nav>
-    <main id="__main">
+    <main id="_main">
         {% block content %} {% endblock %}
         {% block script %} {% endblock %}
     </main>

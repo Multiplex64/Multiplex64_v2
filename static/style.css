@@ -102,11 +102,121 @@ main {
   overflow-y: scroll;
 }
 
-._leftbar main {
+#_topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 30px;
+    background-color: #f0f0f0;
+    width: 100%;
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+    display: flex;
+    color: black;
+    overflow: hidden;
+    align-items: center;
+}
+
+._topbutton {
+    border: 0;
+    border-color: black;
+    background-color: #f0f0f0;
+    width: 32px;
+    height: 30px;
+    border-radius: 0;
+    font-size: 24px;
+    overflow: hidden;
+    position: fixed;
+    color: black;
+    display: block;
+    text-decoration: none;
+    box-sizing: border-box;
+    line-height: 30px;
+    text-align: center;
+}
+
+#_topbar,
+#_leftbar {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#_leftbar {
+    height: 100%;
+    width: 0px;
+    z-index: 100;
+    top: 32px;
+    left: 0;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    transition: width 0.5s, border 0s 0.5s;
+    position: fixed;
+    border-right: solid 0px;
+    white-space: nowrap;
+    text-align: left;
+}
+
+#_homeButton {
+    width: 224px;
+    left: 32px;
+    font-style: italic;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+._leftbar-open #_leftbar {
+    transition: width 0.5s, border 0s 0s;
+    width: 255px;
+    border-right: solid 1px;
+}
+
+._leftbar-open main {
   left: 256px;
 }
 
+._topbutton-left {
+    border-right: solid 1px;
+}
+
+._topbutton-right {
+    border-left: solid 1px;
+}
+
+#_search {
+    border-radius: 0;
+    border: 0;
+    left: 256px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    font-size: 16px;
+    padding: 4px;
+}
+
+#_skipContent {
+    font-size: 16px;
+    left: 0;
+    width: 256px;
+    z-index: -100;
+    text-decoration: underline;
+
+    &:focus {
+        z-index: 100;
+    }
+}
+
+#_homeButton {
+    width: 224px;
+    left: 32px;
+    font-style: italic;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
 /* Content styles */
+
 ._standard {
     max-width: 1040px;
     width: 100%;
