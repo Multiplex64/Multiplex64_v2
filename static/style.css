@@ -9,12 +9,11 @@ input,
 textarea,
 select,
 pre {
-    font-family: var(--font-body);
-
-    &:disabled {
-        background-color: #e8e8e8;
-        color: #181818;
-    }
+  font-family: var(--font-body);
+  &:disabled {
+    background-color: #e8e8e8;
+    color: #181818;
+  }
 }
 
 button,
@@ -22,15 +21,15 @@ input,
 textarea,
 select,
 iframe {
-    border-width: 1px;
-    border-color: black;
-    border-radius: 4px;
-    border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  border-radius: 4px;
+  border-style: solid;
 }
 
 input:is(:-webkit-autofill, :autofill) {
-    outline: solid #f08020 2px;
-    outline-offset: -2px;
+  outline: solid #f08020 2px;
+  outline-offset: -2px;
 }
 
 a,
@@ -38,49 +37,49 @@ button,
 input,
 textarea,
 select {
-    &:focus-visible {
-        outline: solid #2080f0 2px;
-        outline-offset: -2px;
-    }
+  &:focus-visible {
+    outline: solid #2080f0 2px;
+    outline-offset: -2px;
+  }
 }
 
 textarea,
 iframe {
-    width: 100%;
-    resize: vertical;
-    box-sizing: border-box;
+  width: 100%;
+  resize: vertical;
+  box-sizing: border-box;
 }
 
 input[type="checkbox"] {
-    accent-color: #2080f0;
-    width: 16px;
-    height: 16px;
-    display: inline-block;
-    vertical-align: top;
+  accent-color: #2080f0;
+  width: 1rem;
+  height: 1rem;
+  display: inline-block;
+  vertical-align: top;
 }
 
 button {
-    background-color: #f0f0f0;
+  background-color: #f0f0f0;
 
-    &:hover {
-        cursor: pointer;
-        background-color: #e8e8e8;
-    }
+  &:hover {
+    cursor: pointer;
+    background-color: #e8e8e8;
+  }
 
-    &:active {
-        background-color: #e0e0e0;
-    }
+  &:active {
+    background-color: #e0e0e0;
+  }
 }
 
 hr {
-    height: 1px;
-    border: 0;
-    background-color: #000;
+  height: 1px;
+  border: 0;
+  background-color: #000;
 }
 
 pre {
-    white-space: pre-wrap;
-    overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-x: auto;
 }
 
 /* Layout styles */
@@ -93,7 +92,7 @@ body {
 
 main {
   position: fixed;
-  top: 32px;
+  top: 2rem;
   bottom: 0;
   right: 0;
   padding: 0;
@@ -103,134 +102,145 @@ main {
 }
 
 #_topbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 30px;
-    background-color: #f0f0f0;
-    width: 100%;
-    border-top: solid 1px;
-    border-bottom: solid 1px;
-    display: flex;
-    color: black;
-    overflow: hidden;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: calc(2rem - 2px);
+  background-color: #f0f0f0;
+  width: 100%;
+  border-top: solid 1px;
+  border-bottom: solid 1px;
+  display: flex;
+  color: black;
+  overflow: hidden;
+  align-items: center;
 }
 
 ._topbutton {
-    border: 0;
-    border-color: black;
-    background-color: #f0f0f0;
-    width: 32px;
-    height: 30px;
-    border-radius: 0;
-    font-size: 24px;
-    overflow: hidden;
-    position: fixed;
-    color: black;
-    display: block;
-    text-decoration: none;
-    box-sizing: border-box;
-    line-height: 30px;
-    text-align: center;
+  border: 0;
+  border-color: black;
+  background-color: #f0f0f0;
+  width: 2rem;
+  height: calc(2rem - 2px);
+  border-radius: 0;
+  font-size: 1.5rem;
+  overflow: hidden;
+  position: fixed;
+  color: black;
+  display: block;
+  text-decoration: none;
+  box-sizing: border-box;
+  line-height: calc(2rem - 2px);
+  text-align: center;
 }
 
 #_topbar,
 #_leftbar {
-    -webkit-user-select: none;
-    user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 #_leftbar {
-    height: 100%;
-    width: 0px;
-    z-index: 100;
-    top: 32px;
-    left: 0;
-    background-color: #f0f0f0;
-    overflow: hidden;
-    transition: width 0.5s, border 0s 0.5s;
-    position: fixed;
-    border-right: solid 0px;
-    white-space: nowrap;
-    text-align: left;
-}
-
-#_homeButton {
-    width: 224px;
-    left: 32px;
-    font-style: italic;
-    font-weight: bold;
-    text-decoration: underline;
+  height: 100%;
+  width: 0px;
+  z-index: 100;
+  top: 2rem;
+  left: 0;
+  background-color: #f0f0f0;
+  overflow: hidden;
+  transition:
+    width 0.5s,
+    border 0s 0.5s;
+  position: fixed;
+  border-right: solid 0px;
+  white-space: nowrap;
+  text-align: left;
 }
 
 ._leftbar-open #_leftbar {
-    transition: width 0.5s, border 0s 0s;
-    width: 255px;
-    border-right: solid 1px;
+  transition:
+    width 0.5s,
+    border 0s 0s;
+  width: calc(16rem - 1px);
+  border-right: solid 1px;
 }
 
 ._leftbar-open main {
-  left: 256px;
+  left: 16rem;
 }
 
 ._topbutton-left {
-    border-right: solid 1px;
+  border-right: solid 1px;
 }
 
 ._topbutton-right {
-    border-left: solid 1px;
+  border-left: solid 1px;
 }
 
 #_search {
-    border-radius: 0;
-    border: 0;
-    left: 256px;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    position: absolute;
-    font-size: 16px;
-    padding: 4px;
+  border-radius: 0;
+  border: 0;
+  left: 16rem;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  padding: 0.5rem;
 }
 
-#_skipContent {
-    font-size: 16px;
-    left: 0;
-    width: 256px;
-    z-index: -100;
-    text-decoration: underline;
+#_skipcontent {
+  font-size: 1rem;
+  left: 0;
+  width: 16rem;
+  z-index: -100;
+  text-decoration: underline;
 
-    &:focus {
-        z-index: 100;
-    }
+  &:focus {
+    z-index: 100;
+  }
 }
 
-#_homeButton {
-    width: 224px;
-    left: 32px;
-    font-style: italic;
-    font-weight: bold;
-    text-decoration: underline;
+#_homebutton {
+  width: 14rem;
+  left: 2rem;
+  font-style: italic;
+  font-weight: bold;
+  text-decoration: underline;
 }
-
 
 /* Content styles */
 
 ._standard {
-    max-width: 1040px;
-    width: 100%;
-    margin: auto;
-    padding: 8px;
-    box-sizing: border-box;
-    overflow-wrap: break-word;
-    overflow-x: auto;
+  max-width: 65rem;
+  width: 100%;
+  margin: auto;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  overflow-x: auto;
 }
 
-/*
+/* Small screens */
+
 @media (max-width: 768px) {
-  :root {
-    
+  /* :root { } */
+  ._leftbar-open #_leftbar {
+    width: 100%;
+  }
+
+  ._leftbar-open main {
+    left: 0;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  #_topbar > button:not(#_navbutton) {
+    display: none;
+  }
+
+  #_search {
+    border: 0;
+    left: 32px;
+    right: 0;
   }
 }
-*/
