@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /null/
-Disallow: /alt/
 
 Sitemap: https://multiplex64.pythonanywhere.com/sitemap.xml
