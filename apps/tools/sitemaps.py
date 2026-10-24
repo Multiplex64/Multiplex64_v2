@@ -1,7 +1,7 @@
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 
-class tools_sitemap(Sitemap):
+class ToolsIndexSitemap(Sitemap):
     priority = 0.8
     changefreq = 'weekly'
     def items(self):
@@ -11,3 +11,7 @@ class tools_sitemap(Sitemap):
         # Resolve URL
         print(item)
         return reverse(item)
+
+class ToolsPagesSitemap(Sitemap):
+    priority = 0.5
+    changefreq = 'weekly'

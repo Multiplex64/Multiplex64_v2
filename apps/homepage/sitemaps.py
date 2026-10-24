@@ -1,7 +1,7 @@
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 
-class homepage_sitemap(Sitemap):
+class HomepageIndexSitemap(Sitemap):
     priority = 1.0
     changefreq = 'weekly'
     def items(self):
