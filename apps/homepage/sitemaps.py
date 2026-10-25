@@ -9,5 +9,4 @@ class HomepageIndexSitemap(Sitemap):
 
     def location(self, item):
         # Resolve URL
-        print(item)
         return reverse(item)

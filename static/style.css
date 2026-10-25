@@ -9,6 +9,7 @@ input,
 textarea,
 select,
 pre {
+  font-size: 1rem;
   font-family: var(--font-body);
   &:disabled {
     background-color: #e8e8e8;
