@@ -21,7 +21,8 @@ class ToolsPagesSitemap(Sitemap):
     changefreq = "weekly"
 
     def items(self):
-        # Define your templates folder path
+        # Auto-generate tools pages in sitemap based on the files in templates/
+        
         template_dir = os.path.join(
             settings.BASE_DIR, "apps", "tools", "templates", "tools"
         )
@@ -30,7 +31,7 @@ class ToolsPagesSitemap(Sitemap):
         if os.path.exists(template_dir):
             for root, dirs, files in os.walk(template_dir):
                 for file in files:
-                    if file.endswith(".html"):
+                    if file.endswith(".html") and file != "index.html":
                         # Map file name to a named URL pattern or build a path
                         # Example: assuming file 'about.html' maps to view name 'myapp:about'
                         view_name = f"tools:{file.replace('.html', '')}"
