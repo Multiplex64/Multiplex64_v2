@@ -2,7 +2,6 @@
   --font-body: "Roboto", "Arial", sans-serif;
 }
 
-/*
 @font-face {
   font-family: 'logo-font';
   src: url('/static/logo-font-bold-italic.woff2') format('woff2');
@@ -10,7 +9,6 @@
   font-style: italic;
   font-display: swap;
 }
-*/
 
 /* Global styles */
 
@@ -238,7 +236,7 @@ main {
 }
 
 ._logo {
-  font-family: "Courier New", Courier, monospace;
+  font-family: "logo-font", "Courier New", Courier, monospace;
   font-weight: bold;
   font-style: italic;
   text-decoration: underline;
