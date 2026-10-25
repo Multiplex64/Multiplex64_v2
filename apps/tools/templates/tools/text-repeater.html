@@ -1,44 +1,43 @@
 {% extends base_template %}
-{% block title %}Tools - Multiplex64{% endblock %}
+{% block title %}Text Repeater - Multiplex64{% endblock %}
 {% block content %}
 <div class="_standard">
-    Text Repeater
-    <br><br>
-    Input
-    <br>
-    <textarea id="input">hello, world!</textarea>
-    <br>
-    Repetitions
-    <br>
-    <input id="reps" type="number" value="3" class="app_input">
-    <br><br>
-    <button id="action">Go!</button>
-    <input type="checkbox" id="auto-check" checked><label for="auto-check">Auto</label>
-    <br><br>
-    Output
-    <br>
-    <textarea id="output"></textarea>
+  Text Repeater
+  <br><br>
+  Input
+  <br>
+  <textarea id="app-input">hello, world!</textarea>
+  <br>
+  Repetitions
+  <br>
+  <input id="repetitions" type="number" value="3" class="app_input">
+  <br><br>
+  <button id="action">Go!</button>
+  <input type="checkbox" id="auto-check" checked><label for="auto-check">Auto</label>
+  <br><br>
+  Output
+  <br>
+  <textarea id="output"></textarea>
 </div>
 {% endblock %}
 
 {% block script %}
 <script>
-    (function () {
-        const input = document.getElementById("input")
-        const reps = document.getElementById("reps")
-        const checkbox = document.getElementById('auto-check')
-        const button = document.getElementById('action')
-        const output = document.getElementById("output")
-        function repeat(manual) {
-            if (manual || document.getElementById("auto-check").checked) {
-                output.value = input.value.repeat(reps.value)
-            }
-        }
-        repeat(true);
-        input.addEventListener("input", repeat)
-        reps.addEventListener("input", repeat)
-        input.addEventListener("input", repeat)
-        button.addEventListener("click", repeat, true)
-    })();
+  (function () {
+    const app_input = document.getElementById("app-input")
+    const repetitions = document.getElementById("repetitions")
+    const auto_check = document.getElementById('auto-check')
+    const action_button = document.getElementById('action')
+    const output = document.getElementById("output")
+    function repeat(manual_action) {
+      if (manual_action || auto_check.checked) {
+        output.value = app_input.value.repeat(repetitions.value)
+      }
+    }
+    repeat(true);
+    app_input.addEventListener("input", () => repeat())
+    repetitions.addEventListener("input", () => repeat())
+    action_button.addEventListener("click", () => repeat(true))
+  })();
 </script>
 {% endblock %}

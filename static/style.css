@@ -235,7 +235,7 @@ main {
     user-select: none;
   }
 
-  #_topbar > button:not(#_navbutton) {
+  #_topbar > action_button:not(#_navbutton) {
     display: none;
   }
 
