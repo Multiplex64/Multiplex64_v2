@@ -2,19 +2,19 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="google-site-verification" content="2l0UYaLJnpjnJpL1bFR3HM-eK2r5uEuIK7qoAEEjiqs" />
-    <meta name="author" content="Multiplex64" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site-name" content="Multiplex64" />
-    <meta property="og:image" content="https://multiplex64.pythonanywhere.com/static/logo.png" />
-    <title>{% block title %}Multiplex64{% endblock %}</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="2l0UYaLJnpjnJpL1bFR3HM-eK2r5uEuIK7qoAEEjiqs" />
+  <meta name="author" content="Multiplex64" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site-name" content="Multiplex64" />
+  <meta property="og:image" content="https://multiplex64.pythonanywhere.com/static/logo.png" />
+  <title>{% block title %}Multiplex64{% endblock %}</title>
 
-    <link rel="stylesheet" type="text/css" href="/static/style.css" />
-    <script type="text/javascript" src="/static/script.js" defer></script>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <script type="application/ld+json">
+  <link rel="stylesheet" type="text/css" href="/static/style.css" />
+  <script type="text/javascript" src="/static/script.js" defer></script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
@@ -23,30 +23,35 @@
         "url": "https://multiplex64.pythonanywhere.com/"
       }
     </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
-    <nav>
-        <div id="_topbar">
-            <a href="#_main" id="_skipcontent" class="_topbutton _topbutton-left _normal">Skip to Main Content</a>
-            <button id="_navbutton" class="_leftbar-toggle _topbutton _topbutton-left" aria-label="Toggle Navbar">
-                <b>&equiv;</b>
-            </button>
-            <a href="/" id="_homebutton" class="_topbutton _topbutton-left" aria-label="Home">
-                Multiplex64
-            </a>
-            <input placeholder="Search..." id="_search" aria-label="Search" style="display:none;">
-        </div>
-        <div id="_leftbar">
-            <a href="/">Multiplex64 Home</a>
-            <br>
-            <a href="javascript:window.location.reload();">Reload Site</a>
-        </div>
-    </nav>
-    <main id="_main">
-        {% block content %} {% endblock %}
-        {% block script %} {% endblock %}
-    </main>
+  <nav>
+    <div id="_topbar">
+      <a href="#_main" id="_skipcontent" class="_topbutton _topbutton-left _normal">Skip to Main Content</a>
+      <button id="_navbutton" class="_leftbar-toggle _topbutton _topbutton-left" aria-label="Toggle Navbar">
+        <b>&equiv;</b>
+      </button>
+      <a href="/" id="_homebutton" class="_topbutton _topbutton-left _logo" aria-label="Home">
+        Multiplex64
+      </a>
+      <input placeholder="Search..." id="_search" aria-label="Search" style="display:none;">
+    </div>
+    <div id="_leftbar">
+      <a href="/">Multiplex64 Home</a>
+      <br>
+      <a href="javascript:window.location.reload();">Reload Site</a>
+    </div>
+  </nav>
+  <main id="_main">
+    {% block content %} {% endblock %}
+    {% block script %} {% endblock %}
+  </main>
 </body>
 
 </html>

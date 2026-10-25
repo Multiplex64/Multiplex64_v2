@@ -1,6 +1,16 @@
 :root {
-  --font-body: "Courier New", monospace;
+  --font-body: "Roboto", "Arial", sans-serif;
 }
+
+/*
+@font-face {
+  font-family: 'logo-font';
+  src: url('/static/logo-font-bold-italic.woff2') format('woff2');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+*/
 
 /* Global styles */
 
@@ -81,6 +91,11 @@ hr {
 pre {
   white-space: pre-wrap;
   overflow-x: auto;
+}
+
+h1 {
+  font-size: 4rem;
+  margin: 1rem 0;
 }
 
 /* Layout styles */
@@ -204,9 +219,6 @@ main {
 #_homebutton {
   width: 14rem;
   left: 2rem;
-  font-style: italic;
-  font-weight: bold;
-  text-decoration: underline;
 }
 
 /* Content styles */
@@ -219,6 +231,17 @@ main {
   box-sizing: border-box;
   overflow-wrap: break-word;
   overflow-x: auto;
+}
+
+._center {
+  text-align: center;
+}
+
+._logo {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: underline;
 }
 
 /* Small screens */
