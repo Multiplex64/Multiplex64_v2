@@ -6,14 +6,14 @@
   <br><br>
   Input
   <br>
-  <textarea id="app-input">hello, world!</textarea>
+  <textarea id="input-main">hello, world!</textarea>
   <br>
   Repetitions
   <br>
-  <input id="repetitions" type="number" value="3" class="app_input">
+  <input id="repetitions" type="number" value="3">
   <br><br>
-  <button id="action">Go!</button>
-  <input type="checkbox" id="auto-check" checked><label for="auto-check">Auto</label>
+  <button id="button-action">Go!</button>
+  <input type="checkbox" id="check-auto" checked><label for="check-auto">Auto</label>
   <br><br>
   Output
   <br>
@@ -24,20 +24,20 @@
 {% block script %}
 <script>
   (function () {
-    const app_input = document.getElementById("app-input")
+    const inputMain = document.getElementById("input-main")
     const repetitions = document.getElementById("repetitions")
-    const auto_check = document.getElementById('auto-check')
-    const action_button = document.getElementById('action')
+    const checkAuto = document.getElementById('check-auto')
+    const buttonAction = document.getElementById('button-action')
     const output = document.getElementById("output")
     function repeat(manual_action) {
-      if (manual_action || auto_check.checked) {
-        output.value = app_input.value.repeat(repetitions.value)
+      if (manual_action || checkAuto.checked) {
+        output.value = inputMain.value.repeat(repetitions.value)
       }
     }
     repeat(true);
-    app_input.addEventListener("input", () => repeat())
+    inputMain.addEventListener("input", () => repeat())
     repetitions.addEventListener("input", () => repeat())
-    action_button.addEventListener("click", () => repeat(true))
+    buttonAction.addEventListener("click", () => repeat(true))
   })();
 </script>
 {% endblock %}

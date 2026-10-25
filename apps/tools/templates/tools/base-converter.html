@@ -8,7 +8,7 @@
   <br><br>
   Input
   <br>
-  <textarea id="app-input">100</textarea>
+  <textarea id="input-main">100</textarea>
   <br>
   Input Base (Radix)
   <br>
@@ -18,8 +18,8 @@
   <br>
   <input id="base-out" type="number" value="2" min="2" max="36">
   <br><br>
-  <button id="action">Go!</button>
-  <input type="checkbox" id="auto-check" checked><label for="auto-check">Auto</label>
+  <button id="button-action">Go!</button>
+  <input type="checkbox" id="check-auto" checked><label for="check-auto">Auto</label>
   <br><br>
   Output
   <br>
@@ -30,27 +30,27 @@
 {% block script %}
 <script>
   (function () {
-    const app_input = document.getElementById("app-input")
+    const inputMain = document.getElementById("input-main")
     const baseIn = document.getElementById("base-in")
     const baseOut = document.getElementById("base-out")
-    const auto_check = document.getElementById('auto-check')
-    const action_button = document.getElementById('action')
+    const checkAuto = document.getElementById('check-auto')
+    const buttonAction = document.getElementById('button-action')
     const output = document.getElementById("output")
     function convertBase(manual_action) {
       console.log(manual_action)
-      if (manual_action || auto_check.checked) {
+      if (manual_action || checkAuto.checked) {
         try {
-          output.value = parseInt(app_input.value, baseIn.value).toString(baseOut.value)
+          output.value = parseInt(inputMain.value, baseIn.value).toString(baseOut.value)
         } catch (error) {
           output.value = "Error: " + error.message
         }
       }
     }
     convertBase(true);
-    app_input.addEventListener("input", () => convertBase())
+    inputMain.addEventListener("input", () => convertBase())
     baseIn.addEventListener("input", () => convertBase())
     baseOut.addEventListener("input", () => convertBase())
-    action_button.addEventListener("click", () => convertBase(true))
+    buttonAction.addEventListener("click", () => convertBase(true))
   })();
 </script>
 {% endblock %}
