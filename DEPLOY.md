@@ -2,11 +2,13 @@
 
 ## General Development Testing:
 
+Clone to local folder
+
 To Initialize:
 ```
 sh deploy.sh
 ```
-set variables in .env
+set variables in .env,
 set config/settings/local_settings.py if needed
 
 Create superuser:
@@ -32,10 +34,11 @@ git clone https://github.com/Multiplex64/Multiplex64_v2 .
 mkvirtualenv --python=/usr/bin/python3.13 venv
 ```
 
-set variables in .env
+set variables in .env,
 set config/settings/local_settings.py if needed
 
 Go to PythonAnywhere app page and set static files:
+
 /static/ ===== /home/\<user\>/\<project\>/_staticfiles
 
 go to terminal at home/\<user\>/\<project\>/
@@ -64,4 +67,12 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'config.settings'
 ## then:
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
+```
+
+To Update:
+
+go to terminal at home/\<user\>/\<project\>/
+```
+git pull origin main
+sh deploy.sh
 ```
