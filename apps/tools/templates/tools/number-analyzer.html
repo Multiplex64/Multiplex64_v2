@@ -1,0 +1,80 @@
+{% extends base_template %}
+{% block title %}Number Analyzer - Multiplex64{% endblock %}
+{% block content %}
+<div class="_standard">
+  <a href="{% url 'tools:index' %}">Tools</a> / Number Analyzer
+  <br><br>
+  Input
+  <br>
+  <input type="number" id="input-main" value="60">
+  <br><br>
+  <button id="button-action">Go!</button>
+  <input type="checkbox" id="check-auto" checked><label for="check-auto">Auto</label>
+  <br><br>
+  Output
+  <br>
+  <div id="output"></div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+  (function () {
+    function divisibleBy(n) {
+      if (Number.isInteger(n)) {
+        if (n <= Number.MAX_SAFE_INTEGER) {
+          const factors = [];
+          for (i = 1; i < n; i++) {
+            if (n % i == 0) {
+              factors.push(i);
+            }
+          }
+          factors.push(n);
+          return factors.join(", ");
+        } else {
+          return "Error: Number too large"
+        }
+      } else {
+        return "Error: Not an integer"
+      }
+    }
+    function primeFactors(n) {
+      if (Number.isInteger(n)) {
+        if (n <= Number.MAX_SAFE_INTEGER) {
+          const factors = [];
+          let divisor = 2;
+
+          while (n >= 2) {
+            if (n % divisor == 0) {
+              factors.push(divisor);
+              n = n / divisor;
+            } else {
+              divisor++;
+            }
+          }
+          return factors.join(", ");
+        } else {
+          return "Error: Number too large"
+        }
+      } else {
+        return "Error: Not an integer"
+      }
+    }
+    const inputMain = document.getElementById("input-main")
+    const checkAuto = document.getElementById('check-auto')
+    const buttonAction = document.getElementById('button-action')
+    const output = document.getElementById("output")
+    function analyzeNumber(manual_action) {
+      if (manual_action || checkAuto.checked) {
+        const num = Number(inputMain.value)
+        output.innerHTML = ("Value: " + num
+          + "<br> Prime Factors: " + primeFactors(num)
+          + "<br> Divisible By: " + divisibleBy(num))
+      }
+    }
+    analyzeNumber(true);
+    inputMain.addEventListener("input", () => analyzeNumber())
+    buttonAction.addEventListener("click", () => analyzeNumber(true))
+  })();
+</script>
+{% endblock %}

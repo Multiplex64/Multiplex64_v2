@@ -1,0 +1,53 @@
+{% extends base_template %}
+{% block title %}Random Text Generator - Multiplex64{% endblock %}
+{% block content %}
+<div class="_standard">
+  <a href="{% url 'tools:index' %}">Tools</a> / Random Text Generator
+  <br><br>
+  Characters
+  <textarea id="input-characters">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</textarea>
+  <br>
+  Length
+  <input type="number" id="input-length" value="64" min="1" max="1024">
+  <br><br>
+  <button id="button-action">Go!</button>
+  <input type="checkbox" id="check-auto" checked><label for="check-auto">Auto</label>
+  <br><br>
+  Output
+  <br>
+  <pre id="output"></pre>
+  <br><br>
+  <p>
+    This generator is cryptographic, meaning it can be used for secure generation of secret keys or passwords for most
+    purposes.
+  </p>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+  (function () {
+    const inputChars = document.getElementById("input-characters")
+    const inputLength = document.getElementById("input-length")
+    const checkAuto = document.getElementById('check-auto')
+    const buttonAction = document.getElementById('button-action')
+    const output = document.getElementById("output")
+    function generateText(manual_action) {
+      if (manual_action || checkAuto.checked) {
+        const digits = inputChars.value;
+        const array = new Uint8Array(inputLength.value);
+        window.crypto.getRandomValues(array);
+        let result = '';
+        for (let i = 0; i < inputLength.value; i++) {
+          result += digits[array[i] % digits.length];
+        }
+        output.textContent = result;
+      }
+    }
+    generateText(true);
+    inputChars.addEventListener("input", () => generateText())
+    inputLength.addEventListener("input", () => generateText())
+    buttonAction.addEventListener("click", () => generateText(true))
+  })();
+</script>
+{% endblock %}
