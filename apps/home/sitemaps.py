@@ -5,7 +5,7 @@ class HomeIndexSitemap(Sitemap):
     priority = 1.0
     changefreq = 'weekly'
     def items(self):
-        return ['home:index']
+        return ['home:index', 'home:about']
 
     def location(self, item):
         # Resolve URL

@@ -16,6 +16,8 @@ Create superuser:
 python manage.py createsuperuser
 ```
 
+Set sitemap URLs through administration!
+
 When changing hostnames, find and replace it in all files as it is distributed in many locations.
 
 
@@ -68,6 +70,8 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'config.settings'
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
 ```
+
+
 
 To Update:
 
