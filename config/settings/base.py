@@ -15,7 +15,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "django.contrib.sitemaps",
-    "apps.homepage",
+    "apps.home",
     "apps.tools",
 ]
 

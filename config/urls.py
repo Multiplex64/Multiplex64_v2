@@ -21,7 +21,7 @@ from django.contrib import admin
 from django.urls import include, path, re_path
 from django.views.static import serve
 from django.contrib.sitemaps.views import sitemap
-from apps.homepage.sitemaps import HomepageIndexSitemap
+from apps.home.sitemaps import HomeIndexSitemap
 from apps.tools.sitemaps import ToolsIndexSitemap, ToolsPagesSitemap
 
 import os
@@ -42,14 +42,14 @@ def static_root(request, path):
 
 
 sitemaps = {
-    "homepage": HomepageIndexSitemap,
+    "home": HomeIndexSitemap,
     "tools-index": ToolsIndexSitemap,
     "tools": ToolsPagesSitemap,
 }
 
 urlpatterns = [
     # General Directories
-    path("", include("apps.homepage.urls")),
+    path("", include("apps.home.urls")),
     path("tools/", include("apps.tools.urls")),
     path(
         "sitemap.xml",
