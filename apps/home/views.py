@@ -6,3 +6,6 @@ def index(request):
 
 def about(request):
      return render(request, "home/about.html", {"base_template": "base.html"})
+
+def contact(request):
+     return render(request, "home/contact.html", {"base_template": "base.html"})

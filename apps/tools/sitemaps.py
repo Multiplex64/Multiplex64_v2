@@ -32,8 +32,6 @@ class ToolsPagesSitemap(Sitemap):
             for root, dirs, files in os.walk(template_dir):
                 for file in files:
                     if file.endswith(".html") and file != "index.html":
-                        # Map file name to a named URL pattern or build a path
-                        # Example: assuming file 'about.html' maps to view name 'myapp:about'
                         view_name = f"tools:{file.replace('.html', '')}"
                         print(view_name)
                         try:
