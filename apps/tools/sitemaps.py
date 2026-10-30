@@ -33,7 +33,6 @@ class ToolsPagesSitemap(Sitemap):
                 for file in files:
                     if file.endswith(".html") and file != "index.html":
                         view_name = f"tools:{file.replace('.html', '')}"
-                        print(view_name)
                         try:
                             reverse(
                                 "tools:tool",
