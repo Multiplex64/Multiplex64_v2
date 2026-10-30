@@ -2,7 +2,7 @@ from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 
 class PricingIndexSitemap(Sitemap):
-    priority = 1.0
+    priority = 0.3
     changefreq = 'weekly'
     def items(self):
         return ['pricing:index']
