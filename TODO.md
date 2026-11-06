@@ -1,12 +1,15 @@
 # TODO
 
+## Potential Additions
+- [ ] User Accounts
+- [ ] Adjustable Sidebar
+
 ## To Do
 - [ ] Blog System
 - [ ] External sites
-- [ ] User Accounts
-- [ ] Adjustable sidebar
 - [ ] Partial refresh feature
 - [ ] Old Page Redirects
+- [ ] Error pages
 
 ## In Progress
 - [ ] Import all tools
