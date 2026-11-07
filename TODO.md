@@ -6,16 +6,16 @@
 
 ## To Do
 - [ ] Blog System
-- [ ] External sites
+- [ ] External site hosting
 - [ ] Partial refresh feature
-- [ ] Old Page Redirects
-- [ ] Error pages
+- [ ] Old page redirects
+- [ ] Feedback form
 
 ## In Progress
 - [ ] Set hostname through env or other global variable? (sitemaps, robots.txt, base.html, etc)
-- [ ] Server Update Script
+- [ ] Server update script
 
 ## Done
 - [x] rearrange TODO
 - [x] Import all tools
-
+- [x] Error pages
