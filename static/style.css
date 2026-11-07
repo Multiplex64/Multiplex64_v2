@@ -53,7 +53,8 @@ button,
 input,
 textarea,
 select,
-iframe {
+iframe,
+._border {
   border-width: 1px;
   border-color: black;
   border-radius: 4px;
