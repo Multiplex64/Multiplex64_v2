@@ -9,3 +9,6 @@ def about(request):
 
 def contact(request):
      return render(request, "home/contact.html")
+
+def roadmap(request):
+     return render(request, "home/roadmap.html")
