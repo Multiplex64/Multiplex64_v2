@@ -56,7 +56,7 @@ from dotenv import load_dotenv
 
 base_dir = os.path.expanduser('~/\<project\>')
 dotenv_path = os.path.join(base_dir, '.env')
-load_dotenv(dotenv_path=dotenv_path)
+load_dotenv(dotenv_path=dotenv_path, override=True)
 
 ## assuming your django settings file is at '/home/\<user\>/\<project\>/config/settings.py'
 ## and your manage.py is is at '/home/\<user\>/\<project\>/manage.py'
