@@ -24,33 +24,46 @@
     const checkAuto = document.getElementById('check-auto')
     const buttonAction = document.getElementById('button-action')
     const output = document.getElementById("output")
+    function escapeHTML(unsafe) {
+      return unsafe
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    };
     function applyEffects(manual) {
       if (manual || checkAuto.checked) {
         function alternatingCaps(str) {
           return str.replace(/\w(.|$)/g, s => s[0].toUpperCase() + (s[1] ? s[1].toLowerCase() : ''));
         }
+        function randomCaps(str) {
+          return str
+            .split('')
+            .map(char => {
+              // Randomly choose true or false (50/50 chance)
+              return Math.random() < 0.5
+                ? char.toUpperCase()
+                : char.toLowerCase();
+            })
+            .join('');
+        }
         function smallCaps(str) {
-          normal = "abcdefghijklmnopqrstuvwxyz"
-          smallCaps = "ᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ"
-          out = str
+          const normal = "abcdefghijklmnopqrstuvwxyz"
+          const modified = "ᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ"
+          let out = str
           for (let i = 0; i < normal.length; i++) {
-            out = out.replaceAll(normal[i], smallCaps[i])
+            out = out.replaceAll(normal[i], modified[i])
           }
           return out;
-
         }
-        function escapeHTML(unsafe) {
-          return unsafe
-            .replaceAll("&", "&amp;")
-            .replaceAll("<", "&lt;")
-            .replaceAll(">", "&gt;")
-            .replaceAll('"', "&quot;")
-            .replaceAll("'", "&#039;");
-        };
+        const swapCase = str => str.split('').map(c => c === c.toUpperCase() ? c.toLowerCase() : c.toUpperCase()).join('');
         const inputVal = inputMain.value
         output.innerHTML = (
           "ALL CAPS <br><pre class='te'>" + escapeHTML(inputVal.toUpperCase())
           + "</pre><hr> lowercase <br><pre class='te'>" + escapeHTML(inputVal.toLowerCase())
+          + "</pre><hr> rEVERSED cAPS <br><pre class='te'>" + escapeHTML(swapCase(inputVal))
+          + "</pre><hr> ranDom CApS <br><pre class='te'>" + escapeHTML(randomCaps(inputVal))
           + "</pre><hr> AlTeRnAtInG CaPs <br><pre class='te'>" + escapeHTML(alternatingCaps(inputVal))
           + "</pre><hr> Sᴍᴀʟʟ Cᴀᴘs <br><pre class='te'>" + escapeHTML(smallCaps(inputVal))
           + "</pre><hr> S p a c e d &nbsp; O u t <br><pre class='te'>" + escapeHTML(inputVal.split('').join(' '))
