@@ -118,12 +118,12 @@ pre {
 
 h1 {
   font-size: 4rem;
-  margin: 1rem;
+  margin: 1rem 0;
 }
 
 h2 {
   font-size: 2rem;
-  margin: 0.5rem;
+  margin: 0.5rem 0;
 }
 
 /* Layout styles */

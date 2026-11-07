@@ -12,10 +12,10 @@
 - [ ] Error pages
 
 ## In Progress
-- [ ] Import all tools
 - [ ] Set hostname through env or other global variable? (sitemaps, robots.txt, base.html, etc)
 - [ ] Server Update Script
 
 ## Done
 - [x] rearrange TODO
+- [x] Import all tools
 
