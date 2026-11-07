@@ -122,8 +122,8 @@ h1 {
 }
 
 h2 {
-    font-size: 2rem;
-    margin: 0.5rem;
+  font-size: 2rem;
+  margin: 0.5rem;
 }
 
 /* Layout styles */
@@ -262,6 +262,11 @@ main {
   overflow-x: auto;
 }
 
+main:has(._maxheight) {
+  display: grid;
+  overflow: hidden;
+}
+
 ._center {
   text-align: center;
 }
@@ -274,7 +279,7 @@ main {
 }
 
 hr._short {
-    width:256px;
+  width: 256px;
 }
 
 /* Small screens */
