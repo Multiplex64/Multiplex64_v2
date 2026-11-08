@@ -279,6 +279,10 @@ main:has(._maxheight) {
   text-decoration: underline;
 }
 
+._2rem-line-height {
+    line-height: 2rem;
+}
+
 hr._short {
   width: 256px;
 }
