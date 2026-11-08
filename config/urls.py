@@ -24,6 +24,7 @@ from django.contrib.sitemaps.views import sitemap
 from apps.home.sitemaps import HomeIndexSitemap, HomePagesSitemap
 from apps.pricing.sitemaps import PricingIndexSitemap
 from apps.tools.sitemaps import ToolsIndexSitemap, ToolsPagesSitemap
+from apps.feedback.sitemaps import FeedbackIndexSitemap
 
 import os
 
@@ -45,16 +46,19 @@ def static_root(request, path):
 sitemaps = {
     "home-index": HomeIndexSitemap,
     "home-pages": HomePagesSitemap,
-    "pricing-index" : PricingIndexSitemap,
     "tools-index": ToolsIndexSitemap,
     "tools-pages": ToolsPagesSitemap,
+    "pricing-index" : PricingIndexSitemap,
+    'feedback-index': FeedbackIndexSitemap,
 }
 
 urlpatterns = [
     # General Directories
     path("", include("apps.home.urls")),
     path("tools/", include("apps.tools.urls")),
+    path("feedback/", include("apps.feedback.urls")),
     path("pricing/", include("apps.pricing.urls")),
+    # Sitemap
     path(
         "sitemap.xml",
         sitemap,

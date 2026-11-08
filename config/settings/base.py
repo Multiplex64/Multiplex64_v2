@@ -16,8 +16,9 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.sitemaps",
     "apps.home",
-    "apps.pricing",
     "apps.tools",
+    "apps.feedback",
+    "apps.pricing",
 ]
 
 MIDDLEWARE = [

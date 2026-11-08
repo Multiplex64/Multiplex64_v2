@@ -1,0 +1,29 @@
+{% extends base_template|default:"base.html" %}
+{% block title %}Feedback - Multiplex64{% endblock %}
+{% block content %}
+<div class="_standard">
+  <h1>Feedback</h1>
+  <!-- Success Alert Message -->
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-success">{{ message }}</div>
+  {% endfor %}
+  {% endif %}
+
+  <form method="POST">
+    {% csrf_token %}
+
+    <!-- Renders form layout safely using native layout blocks -->
+    {{ form.as_div }}
+
+    <button type="submit" class="btn btn-primary w-100 mt-3">Submit Feedback</button>
+  </form>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+
+
+</script>
+{% endblock %}
