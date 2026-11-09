@@ -72,7 +72,7 @@ input:is(:-webkit-autofill, :autofill) {
 
 a,
 button,
-input,
+input\,
 textarea,
 select {
   &:focus-visible {
@@ -94,6 +94,10 @@ input[type="checkbox"] {
   height: 1rem;
   display: inline-block;
   vertical-align: top;
+  border-radius: 4px;
+  &:focus-visible {
+    outline: solid #28e 2px;
+  }
 }
 
 button {
