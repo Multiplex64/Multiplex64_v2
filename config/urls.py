@@ -58,7 +58,7 @@ urlpatterns = [
     path("tools/", include("apps.tools.urls")),
     path("feedback/", include("apps.feedback.urls")),
     path("pricing/", include("apps.pricing.urls")),
-    # Sitemap
+    # Sitemaps
     path(
         "sitemap.xml",
         sitemap,
@@ -67,6 +67,11 @@ urlpatterns = [
     ),
     # System/secret directories
     path(secret_dir + "admin/", admin.site.urls),
-    # Static file system, should be bypassed in production
-    re_path(r"^(?P<path>[\w\-]+\.[a-zA-Z0-9]+)$", static_root),
 ]
+
+
+ENVIRONMENT = os.getenv("ENV", "prod")
+
+if ENVIRONMENT == "dev":
+   # Add static file serving at root in development server, disable in prod
+   urlpatterns.append(re_path(r"^(?P<path>[\w\-]+\.[a-zA-Z0-9]+)$", static_root))
