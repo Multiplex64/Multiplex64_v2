@@ -1,3 +1,8 @@
+/*
+Global Stylesheet for most pages
+*/
+
+/* Root variables */
 :root {
   --font-body: "Roboto", "Arial", sans-serif;
 }

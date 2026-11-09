@@ -1,3 +1,8 @@
+/* 
+Main script
+Runs in a function on full page load, 
+to avoid polluting global namespace
+*/
 document.addEventListener("DOMContentLoaded", function () {
   // Stuff that runs when the document fully loads
   const leftbarToggle = document.querySelectorAll("._leftbar-toggle");
