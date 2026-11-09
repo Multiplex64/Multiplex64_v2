@@ -16,7 +16,7 @@ A more robust backend will allow for faster and more significant development of 
 
 The Beta Site is Currently Unavailable.
 
-## This is still in Beta Development! 
+## This is still in Beta Development!
 
 ### Expected Launch: December 2026 - January 2027
 

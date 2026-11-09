@@ -5,13 +5,16 @@
 Clone to local folder
 
 To Initialize:
+
 ```
 sh deploy.sh
 ```
+
 set variables in .env,
 set config/settings/local_settings.py if needed
 
 Create superuser:
+
 ```
 python manage.py createsuperuser
 ```
@@ -19,7 +22,6 @@ python manage.py createsuperuser
 Set sitemap URLs through administration!
 
 When changing hostnames, find and replace it in all files as it is distributed in many locations.
-
 
 ## PythonAnywhere:
 
@@ -31,6 +33,7 @@ Expect this to take up to 50 CPU seconds.
 create folder at home/\<user\>/\<project\>/
 
 create terminal at home/\<user\>/\<project\>/
+
 ```
 git clone https://github.com/Multiplex64/Multiplex64_v2 .
 mkvirtualenv --python=/usr/bin/python3.13 venv
@@ -41,14 +44,16 @@ set config/settings/local_settings.py if needed
 
 Go to PythonAnywhere app page and set static files:
 
-/static/ ===== /home/\<user\>/\<project\>/_staticfiles
+/static/ ===== /home/\<user\>/\<project\>/\_staticfiles
 
 go to terminal at home/\<user\>/\<project\>/
+
 ```
 sh deploy.sh
 ```
 
-edit var/www/\<user\>_pythonanywhere_com_wsgi.py
+edit var/www/\<user\>\_pythonanywhere_com_wsgi.py
+
 ```
 import os
 import sys
@@ -71,11 +76,10 @@ from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
 ```
 
-
-
 To Update:
 
 go to terminal at home/\<user\>/\<project\>/
+
 ```
 git pull origin main
 sh deploy.sh
