@@ -72,7 +72,7 @@ input:is(:-webkit-autofill, :autofill) {
 
 a,
 button,
-input\,
+input,
 textarea,
 select {
   &:focus-visible {
@@ -233,7 +233,6 @@ main {
   position: fixed;
   color: black;
   display: block;
-  text-decoration: none;
   box-sizing: border-box;
   line-height: calc(2rem - 2px);
   text-align: center;
