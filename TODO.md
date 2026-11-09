@@ -8,7 +8,6 @@
 - [ ] Blog System
 - [ ] External site hosting
 - [ ] Partial refresh feature
-- [ ] Old page redirects
 
 ## In Progress
 - [ ] Set hostname through env or other global variable? (sitemaps, robots.txt, base.html, etc)
@@ -19,3 +18,4 @@
 - [x] rearrange TODO
 - [x] Import all tools
 - [x] Error pages
+- [x] Old page redirects

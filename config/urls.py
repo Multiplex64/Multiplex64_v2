@@ -20,6 +20,7 @@ from django.http import Http404
 from django.contrib import admin
 from django.urls import include, path, re_path
 from django.views.static import serve
+from django.views.generic.base import RedirectView
 from django.contrib.sitemaps.views import sitemap
 from apps.home.sitemaps import HomeIndexSitemap, HomePagesSitemap
 from apps.pricing.sitemaps import PricingIndexSitemap
@@ -43,13 +44,25 @@ def static_root(request, path):
         raise Http404("File not found.")
 
 
+# Permanent redirects
+redirect_redirects = {
+    "future-plans": "/roadmap/",
+    "text-repeater": "/tools/text-repeater/",
+    "html-playground": "/tools/html-playground/",
+    "base-converter": "/tools/base-converter/",
+    "number-analyzer": "/tools/number-analyzer/",
+    "text-effects": "/tools/text-effects/",
+    "time-difference": "/tools/time-difference/",
+}
+
+
 sitemaps = {
     "home-index": HomeIndexSitemap,
     "home-pages": HomePagesSitemap,
     "tools-index": ToolsIndexSitemap,
     "tools-pages": ToolsPagesSitemap,
-    "pricing-index" : PricingIndexSitemap,
-    'feedback-index': FeedbackIndexSitemap,
+    "pricing-index": PricingIndexSitemap,
+    "feedback-index": FeedbackIndexSitemap,
 }
 
 urlpatterns = [
@@ -65,6 +78,11 @@ urlpatterns = [
         {"sitemaps": sitemaps},
         name="django.contrib.sitemaps.views.sitemap",
     ),
+    # Permanent Redirects
+    *[
+        re_path(rf"^{old_path}/?$", RedirectView.as_view(url=new_path, permanent=True))
+        for old_path, new_path in redirect_redirects.items()
+    ],
     # System/secret directories
     path(secret_dir + "admin/", admin.site.urls),
 ]
@@ -73,5 +91,5 @@ urlpatterns = [
 ENVIRONMENT = os.getenv("ENV", "prod")
 
 if ENVIRONMENT == "dev":
-   # Add static file serving at root in development server, disable in prod
-   urlpatterns.append(re_path(r"^(?P<path>[\w\-]+\.[a-zA-Z0-9]+)$", static_root))
+    # Add static file serving at root in development server, disable in prod
+    urlpatterns.append(re_path(r"^(?P<path>[\w\-]+\.[a-zA-Z0-9]+)$", static_root))

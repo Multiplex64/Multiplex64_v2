@@ -1,1 +1,2 @@
 Hello, world!
+/static/test.txt
