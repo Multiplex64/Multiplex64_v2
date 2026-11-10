@@ -19,3 +19,13 @@ ALLOWED_HOSTS = get_env_variable("ALLOWED_HOSTS").split(",")
 
 # Keep the secret key used in production inside .env!
 SECRET_KEY = get_env_variable("SECRET_KEY")
+
+# Security settings
+SECURE_SSL_REDIRECT = True
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
