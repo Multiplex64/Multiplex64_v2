@@ -82,6 +82,14 @@ textarea,
 select {
   &:focus-visible {
     outline: solid #28e 2px;
+  }
+}
+
+button,
+input,
+textarea,
+select {
+  &:focus-visible {
     outline-offset: -2px;
   }
 }
@@ -100,9 +108,6 @@ input[type="checkbox"] {
   display: inline-block;
   vertical-align: top;
   border-radius: 4px;
-  &:focus-visible {
-    outline: solid #28e 2px;
-  }
 }
 
 button {
@@ -241,6 +246,9 @@ main {
   box-sizing: border-box;
   line-height: calc(2rem - 2px);
   text-align: center;
+  &:focus-visible {
+    outline-offset: -2px;
+  }
 }
 
 #_topbar,
