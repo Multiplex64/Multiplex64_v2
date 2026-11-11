@@ -30,12 +30,15 @@ Expect this to take up to 50 CPU seconds.
 \<user\> = PythonAnywhere username
 \<project\> = Project Folder in PythonAnywhere
 
-create folder at home/\<user\>/\<project\>/
+create empty folder at home/\<user\>/\<project\>/
 
 create terminal at home/\<user\>/\<project\>/
 
 ```
-git clone https://github.com/Multiplex64/Multiplex64_v2 .
+git init
+git remote add origin https://github.com/Multiplex64/Multiplex64_v2
+git fetch
+git checkout -t origin/main
 mkvirtualenv --python=/usr/bin/python3.13 venv
 ```
 
