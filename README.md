@@ -10,9 +10,9 @@ A more robust backend will allow for faster and more significant development of 
 
 [Multiplex64 - Current Site](https://multiplex64.pythonanywhere.com)
 
-[Planned Updates](TODO.md)
+[Planned Updates](dev/TODO.md)
 
-[Deployment Process](DEPLOY.md)
+[Deployment Process](dev/DEPLOY.md)
 
 The Beta Site is Currently Unavailable.
 
