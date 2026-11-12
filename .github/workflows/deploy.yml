@@ -27,10 +27,12 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
+        cp dev/env.example .env
         python manage.py test
+        rm -f .env
     - name: Strip development files
       run: |
-        ./dev/build.sh
+        dev/build.sh
         rm -rf dev/
     - name: Commit and push to prod branch
       run: |
