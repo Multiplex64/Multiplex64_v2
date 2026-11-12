@@ -21,23 +21,28 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install Dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Strip Development Files
-      run: |
-        dev/build.sh
-        rm -rf dev/
-    - name: Run Tests
-      run: |
-        cp dev/.env.example .env
-        python manage.py test
-        rm -f .env
     - name: Configure Git
       run: |
         git config user.name "GitHub Actions Bot"
         git config user.email "actions@github.com"
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Create Dummy Test Files
+      run: |
+        # Create .env
+        cp dev/.env.example .env
+    - name: Strip Development Files
+      run: |
+        dev/build.sh
+        # Remove dev folder
+        rm -rf dev/
+    - name: Run Tests
+      run: |
+        python manage.py test
+        # Remove dummy files
+        rm -f .env
     - name: Commit and Push to Prod Branch
       run: |
         git checkout --orphan prod
