@@ -4,6 +4,8 @@ rm -rf .github/
 
 # Remove markdown files
 rm -f README.md
+rm -f TODO.md
+rm -f DEPLOY.md
 
 # Remove example files
 rm -f .env.dev.example
