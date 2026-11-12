@@ -27,7 +27,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        cp dev/env.example .env
+        cp dev/.env.example .env
         python manage.py test
         rm -f .env
     - name: Strip development files
