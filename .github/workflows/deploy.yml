@@ -35,7 +35,7 @@ jobs:
     - name: Create Dummy Test Files
       run: |
         # Create .env
-        cp dev/.env.example .env
+        cp .env.prod.example .env
     - name: Strip Development Files
       run: |
         dev/build.sh
