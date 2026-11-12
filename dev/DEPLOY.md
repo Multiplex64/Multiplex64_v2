@@ -33,9 +33,24 @@ Expect this to take up to 50 CPU seconds.
 
 `<project>` = Project folder in PythonAnywhere
 
+### Clear Existing Files
+
+Delete existing web app
+
+Terminal at `home/<user>/`
+
+```
+pip freeze --user | xargs pip uninstall -y
+rm -rf ~/*
+rm -rf ~/.*
+rm -rf /tmp/*
+```
+
+Open new console to regenerate files
+
 ### Clone
 
-create terminal at `home/<user>/`
+Terminal at `home/<user>/`
 
 ```
 git clone https://github.com/Multiplex64/Multiplex64_v2 <project>
@@ -56,7 +71,7 @@ Go to PythonAnywhere app page and set static files:
 
 ### Deploy
 
-Create terminal at `home/<user>/<project>/`
+Terminal at `home/<user>/<project>/`
 
 ```
 sh deploy.sh
@@ -88,7 +103,7 @@ application = get_wsgi_application()
 
 ### To Update:
 
-go to terminal at `home/<user>/<project>/`
+Terminal at `home/<user>/<project>/`
 
 ```
 git pull origin prod
