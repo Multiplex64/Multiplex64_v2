@@ -80,7 +80,8 @@ if path not in sys.path:
 dotenv_path = os.path.join(path, '.env')
 load_dotenv(dotenv_path=dotenv_path, override=True)
 
-## then:
+os.environ['DJANGO_SETTINGS_MODULE'] = 'config.settings'
+
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
 ```
@@ -90,7 +91,8 @@ application = get_wsgi_application()
 Terminal at `~/Multiplex64/`
 
 ```
-git pull origin prod
+git fetch --depth 1
+git reset --hard origin/prod
 sh deploy.sh
 ```
 
