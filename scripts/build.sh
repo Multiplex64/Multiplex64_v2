@@ -10,7 +10,6 @@ rm -f DEPLOY.md
 # Remove example files
 rm -f .env.dev.example
 rm -f .env.prod.example
-rm -f config/settings/local_settings.py
 
 # Remove scripts
 rm -f scripts/check.sh

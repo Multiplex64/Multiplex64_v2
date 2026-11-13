@@ -3,7 +3,6 @@ __pycache__/
 
 # Django stuff:
 *.log
-local_settings.py
 _data/
 _staticfiles/
 

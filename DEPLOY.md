@@ -12,8 +12,7 @@ To Initialize:
 sh deploy.sh
 ```
 
-set variables in .env,
-set config/settings/local_settings.py if needed
+set variables in `.env`
 
 Create superuser:
 
@@ -61,9 +60,7 @@ This terminal may be deleted afterwards.
 
 ### Setup environment
 
-set variables in `.env`,
-
-set `config/settings/local_settings.py` if needed
+set variables in `.env`
 
 Go to PythonAnywhere app page and set static files:
 
