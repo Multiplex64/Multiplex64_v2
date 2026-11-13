@@ -10,5 +10,10 @@ rm -f DEPLOY.md
 # Remove example files
 rm -f .env.dev.example
 rm -f .env.prod.example
+rm -f config/settings/local_settings.py
 
-# This file's parent folder is deleted by deploy.yml
+# Remove scripts
+rm -f scripts/check.sh
+
+# Remove this file
+rm -f scripts/build.sh

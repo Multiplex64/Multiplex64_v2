@@ -37,10 +37,7 @@ jobs:
         # Create .env
         cp .env.prod.example .env
     - name: Strip Development Files
-      run: |
-        scripts/build.sh
-        # Remove dev folder
-        rm -rf scripts/
+      run: scripts/build.sh
     - name: Run Tests
       run: |
         python manage.py test
