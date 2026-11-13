@@ -91,9 +91,7 @@ application = get_wsgi_application()
 Terminal at `~/Multiplex64/`
 
 ```
-git fetch --depth 1
-git reset --hard origin/prod
-sh scripts/deploy.sh
+sh scripts/update.sh
 ```
 
 Restart the web app
