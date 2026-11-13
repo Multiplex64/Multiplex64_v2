@@ -9,7 +9,7 @@ Clone to local folder
 To Initialize:
 
 ```
-sh deploy.sh
+sh scripts/deploy.sh
 ```
 
 set variables in `.env`
@@ -63,7 +63,7 @@ Go to PythonAnywhere app page and set static files:
 Terminal at `~/Multiplex64/`
 
 ```
-sh deploy.sh
+sh scripts/deploy.sh
 ```
 
 edit `var/www/<username>_pythonanywhere_com_wsgi.py`
@@ -93,7 +93,7 @@ Terminal at `~/Multiplex64/`
 ```
 git fetch --depth 1
 git reset --hard origin/prod
-sh deploy.sh
+sh scripts/deploy.sh
 ```
 
 Restart the web app

@@ -1,4 +1,4 @@
 #!/bin/sh
 # Run when cloning and initializing repository
-sh deploy.sh
+sh scripts/deploy.sh
 git config core.hooksPath .githooks
