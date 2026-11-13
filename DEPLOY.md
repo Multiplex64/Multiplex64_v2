@@ -28,15 +28,9 @@ When changing hostnames, find and replace it in all files as it is distributed i
 
 Expect this to take up to 50 CPU seconds.
 
-`<user>` = PythonAnywhere username
-
-`<project>` = Project folder in PythonAnywhere
-
 ### Clear Existing Files
 
-Delete existing web app
-
-Terminal at `home/<user>/`
+Open Terminal
 
 ```
 pip freeze --user | xargs pip uninstall -y
@@ -49,14 +43,12 @@ Open new console to regenerate files
 
 ### Clone
 
-Terminal at `home/<user>/`
+Terminal at `~/`
 
 ```
-git clone https://github.com/Multiplex64/Multiplex64_v2 <project>
 mkvirtualenv --python=/usr/bin/python3.13 venv
+git clone --depth 1 --branch prod --single-branch https://github.com/Multiplex64/Multiplex64_v2 Multiplex64
 ```
-
-This terminal may be deleted afterwards.
 
 ### Setup environment
 
@@ -64,34 +56,29 @@ set variables in `.env`
 
 Go to PythonAnywhere app page and set static files:
 
-`/static/` ===== `/home/<user>/<project>/_staticfiles/`
+`/static/` ===== `/users/<username>/Multiplex64/_staticfiles/`
 
 ### Deploy
 
-Terminal at `home/<user>/<project>/`
+Terminal at `~/Multiplex64/`
 
 ```
 sh deploy.sh
 ```
 
-edit `var/www/<user>_pythonanywhere_com_wsgi.py`
+edit `var/www/<username>_pythonanywhere_com_wsgi.py`
 
 ```
 import os
 import sys
 from dotenv import load_dotenv
 
-base_dir = os.path.expanduser('~/<project>')
-dotenv_path = os.path.join(base_dir, '.env')
-load_dotenv(dotenv_path=dotenv_path, override=True)
-
-## assuming your django settings file is at '/home/<user>/<project>/config/settings.py'
-## and your manage.py is is at '/home/<user>/<project>/manage.py'
-path = '/home/<user>/<project>'
+path = os.path.expanduser('~/Multiplex64')
 if path not in sys.path:
     sys.path.append(path)
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'config.settings'
+dotenv_path = os.path.join(path, '.env')
+load_dotenv(dotenv_path=dotenv_path, override=True)
 
 ## then:
 from django.core.wsgi import get_wsgi_application
@@ -100,7 +87,7 @@ application = get_wsgi_application()
 
 ### To Update:
 
-Terminal at `home/<user>/<project>/`
+Terminal at `~/Multiplex64/`
 
 ```
 git pull origin prod
