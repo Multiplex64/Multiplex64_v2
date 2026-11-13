@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Feedback(models.Model):
     subject = models.CharField(max_length=200)
