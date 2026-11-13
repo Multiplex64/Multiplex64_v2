@@ -1,5 +1,8 @@
 #!/bin/sh
 echo "Running Tests Before Push..."
+if [ -f ".venv/bin/activate" ]; then
+    source .venv/bin/activate
+fi
 set -e
 python manage.py makemigrations --noinput
 sh scripts/deploy.sh
