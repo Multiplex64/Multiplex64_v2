@@ -1,5 +1,7 @@
 #!/bin/bash
 # Remove development-only files and directories
+
+# Remove Github folder
 rm -rf .github/
 
 # Remove markdown files
@@ -11,8 +13,8 @@ rm -f DEPLOY.md
 rm -f .env.dev.example
 rm -f .env.prod.example
 
-# Remove scripts
-rm -f scripts/check.sh
+# Remove hooks
+rm -f .githooks/pre-push
 
 # Remove this file
 rm -f scripts/build.sh
