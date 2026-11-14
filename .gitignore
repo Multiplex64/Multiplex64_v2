@@ -1,0 +1,17 @@
+# Byte-compiled files
+__pycache__/
+
+# Django stuff:
+*.log
+_data/
+_staticfiles/
+
+# Environments
+.env
+.venv
+
+# System Files
+.git/
+.vscode/
+.DS_Store
+Thumbs.db

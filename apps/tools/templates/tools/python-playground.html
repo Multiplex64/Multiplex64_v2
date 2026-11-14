@@ -1,0 +1,69 @@
+{% extends base_template|default:"base.html" %}
+{% block title %}Python Playground - Multiplex64{% endblock %}
+{% block content %}
+<div class="_maxheight" style="display:grid;grid-template-rows:64px auto;margin:0;padding:0;">
+  <div class="_standard">
+    <a href="{% url 'tools:index' %}">Tools</a> / <h2 style="display: inline-block;">Python Playground</h2>
+  </div>
+  <div style="display:flex;width:100%;">
+    <div style="display:grid;grid-template-rows:24px 1fr;width:512px;" id="left">
+      <div>
+        Python Input -
+        <button id="button-action">Go!</button>
+      </div>
+      <textarea id="html-input"
+        style="height:100%;resize:none;font-family: 'Courier New', Courier, monospace;">print("Hello, world!")</textarea>
+    </div>
+    <div style="background-color: black;width: 4px;border:4px solid white;height: calc(100% - 8px);cursor: col-resize;"
+      id="center"></div>
+    <div style="display:grid;grid-template-rows:24px 1fr;flex: 1;" id="right">
+      <div>
+        Output
+      </div>
+      <pre id='output-pre' style="height:100%;resize:none;margin:0;" class="_border"></pre>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block script %}
+<script src="https://cdn.jsdelivr.net/pyodide/v314.0.7/full/pyodide.js"></script>
+<script>
+  (function () {
+    const buttonAction = document.getElementById('button-action')
+    const inputMain = document.getElementById('html-input')
+    const output = document.getElementById("output-pre")
+
+    let pyodideReadyPromise;
+
+    async function loadPyodideEnvironment() {
+      output.textContent = "Loading Python Interpreter (Pyodide)...";
+      let pyodide = await loadPyodide();
+      output.textContent = "Ready! Press [Go!] to run your script.";
+      return pyodide;
+    }
+
+    pyodideReadyPromise = loadPyodideEnvironment();
+
+    async function runPythonCode() {
+      let pyodide = await pyodideReadyPromise;
+      let code = inputMain.value;
+
+      // Redirect Python stdout to capture print() statements
+      pyodide.setStdout({
+        batched: (msg) => {
+          output.textContent += msg + "\n";
+        }
+      });
+
+      output.textContent = "";
+      try {
+        await pyodide.runPythonAsync(code);
+      } catch (err) {
+        output.textContent += err;
+      }
+    }
+
+    buttonAction.addEventListener("click", () => runPythonCode());
+  })();
+</script>
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends base_template|default:"base.html" %}
+{% block title %}Text Effects - Multiplex64{% endblock %}
+{% block content %}
+<div class="_standard">
+  <a href="{% url 'tools:index' %}">Tools</a> / <h2 style="display: inline-block;">Text Effects</h2>
+  <br><br>
+  Input
+  <br>
+  <textarea id="input-main">hello, world!</textarea>
+  <br><br>
+  <button id="button-action">Go!</button>
+  <label><input type="checkbox" id="check-auto" checked>Auto</label>
+  <br><br>
+  Output
+  <hr>
+  <div id="output"></div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+  (function () {
+    const inputMain = document.getElementById("input-main")
+    const checkAuto = document.getElementById('check-auto')
+    const buttonAction = document.getElementById('button-action')
+    const output = document.getElementById("output")
+    function escapeHTML(unsafe) {
+      return unsafe
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    };
+    function applyEffects(manual) {
+      if (manual || checkAuto.checked) {
+        function alternatingCaps(str) {
+          return str.replace(/\w(.|$)/g, s => s[0].toUpperCase() + (s[1] ? s[1].toLowerCase() : ''));
+        }
+        function randomCaps(str) {
+          return str
+            .split('')
+            .map(char => {
+              // Randomly choose true or false (50/50 chance)
+              return Math.random() < 0.5
+                ? char.toUpperCase()
+                : char.toLowerCase();
+            })
+            .join('');
+        }
+        function smallCaps(str) {
+          const normal = "abcdefghijklmnopqrstuvwxyz"
+          const modified = "ᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ"
+          let out = str
+          for (let i = 0; i < normal.length; i++) {
+            out = out.replaceAll(normal[i], modified[i])
+          }
+          return out;
+        }
+        const swapCase = str => str.split('').map(c => c === c.toUpperCase() ? c.toLowerCase() : c.toUpperCase()).join('');
+        const inputVal = inputMain.value
+        output.innerHTML = (
+          "ALL CAPS <br><pre class='te'>" + escapeHTML(inputVal.toUpperCase())
+          + "</pre><hr> lowercase <br><pre class='te'>" + escapeHTML(inputVal.toLowerCase())
+          + "</pre><hr> rEVERSED cAPS <br><pre class='te'>" + escapeHTML(swapCase(inputVal))
+          + "</pre><hr> ranDom CApS <br><pre class='te'>" + escapeHTML(randomCaps(inputVal))
+          + "</pre><hr> AlTeRnAtInG CaPs <br><pre class='te'>" + escapeHTML(alternatingCaps(inputVal))
+          + "</pre><hr> Sᴍᴀʟʟ Cᴀᴘs <br><pre class='te'>" + escapeHTML(smallCaps(inputVal))
+          + "</pre><hr> S p a c e d &nbsp; O u t <br><pre class='te'>" + escapeHTML(inputVal.split('').join(' '))
+          + "</pre>"
+        )
+        const teElements = document.getElementsByClassName("te")
+        for (let i = 0; i < teElements.length; i++) {
+          teElements[i].insertAdjacentHTML("afterend", "<button class='te-btn'>Copy</button>")
+        }
+        const teButtons = document.querySelectorAll('.te-btn')
+        for (var i = 0; i < teButtons.length; i++) {
+          const teBtn = teButtons[i]
+          teBtn.addEventListener("click", async (event) => {
+            try {
+              await navigator.clipboard.writeText(teBtn.previousElementSibling.innerText);
+              teBtn.innerHTML = "Copied!"
+            } catch (err) {
+              teBtn.innerHTML = "Error: Failed to Copy to Clipboard"
+            }
+            setTimeout(() => {
+              teBtn.innerHTML = "Copy"
+            }, 2000);
+          })
+        }
+      }
+    }
+    applyEffects()
+    applyEffects(true);
+    inputMain.addEventListener("input", () => applyEffects())
+    buttonAction.addEventListener("click", () => applyEffects(true))
+  })();
+</script>
+{% endblock %}

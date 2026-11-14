@@ -1,0 +1,6 @@
+# Contact me through email.
+Contact: mailto:multiplex64dev@gmail.com
+Contact: https://multiplex64.pythonanywhere.com/contact/
+Expires: 2028-01-01T08:00:00.000Z
+Preferred-Languages: en
+Canonical: https://multiplex64.pythonanywhere.com/.well-known/security.txt
