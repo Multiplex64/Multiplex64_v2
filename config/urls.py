@@ -17,7 +17,7 @@ Including another URLconf
 
 import os
 from pathlib import Path
-import environ
+import config.settings
 from django.conf import settings
 from django.http import Http404
 from django.contrib import admin
@@ -32,12 +32,8 @@ from apps.feedback.sitemaps import FeedbackIndexSitemap
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env = environ.Env(
-    DEBUG=(bool, False)
-)
-
-SECRET_DIR = env("SECRET_DIR", cast=str)
-ENVIRONMENT = env("ENV", cast=str)
+SECRET_DIR = config.settings.SECRET_DIR
+ENVIRONMENT = config.settings.ENVIRONMENT
 
 def static_root(request, path):
     """

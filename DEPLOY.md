@@ -71,19 +71,12 @@ edit `var/www/<username>_pythonanywhere_com_wsgi.py`
 ```
 import os
 import sys
-import environ
 
 path = os.path.expanduser('~/Multiplex64')
 if path not in sys.path:
     sys.path.append(path)
 
-env = environ.Env()
-environ.Env.read_env(path / '.env')
-
-os.environ.setdefault(
-    'DJANGO_SETTINGS_MODULE',
-    env('DJANGO_SETTINGS_MODULE', default='config.settings')
-)
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()

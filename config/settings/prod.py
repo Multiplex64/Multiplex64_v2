@@ -1,18 +1,5 @@
 from .base import *
 from django.core.exceptions import ImproperlyConfigured
-import environ
-
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
-
-env = environ.Env(
-    ALLOWED_HOSTS=(list, ["localhost"]),
-)
-
-# allowed hosts
-ALLOWED_HOSTS = env("ALLOWED_HOSTS")
-
-# Keep the secret key used in production inside .env!
-SECRET_KEY = env("SECRET_KEY")
 
 # Security settings
 SECURE_SSL_REDIRECT = True
