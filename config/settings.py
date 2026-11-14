@@ -1,18 +1,13 @@
 from pathlib import Path
 import environ
 
+# Initialize env variables
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-# Setup env variables
-env = environ.Env(
-    ENV=(str, "prod"),
-)
-
+env = environ.Env()
 environ.Env.read_env(BASE_DIR / ".env", overwrite=True)
 
-ENVIRONMENT = env("ENV")
-
-# Set setting values
+# Set global values
+ENVIRONMENT = env.str("ENV", default="prod")
 if ENVIRONMENT == "dev":
     DEBUG = env.bool("DEBUG", default=True)
     SECURE_SSL_REDIRECT = env.bool("SECURE_SSL_REDIRECT", default=False)
@@ -30,14 +25,18 @@ else:
     SECRET_KEY = env.str("SECRET_KEY")
     SECRET_DIR = env.str("SECRET_DIR")
 
-# Constants
-
+# Various Constants
 SITE_ID = 1
 ROOT_URLCONF = "config.urls"
 WSGI_APPLICATION = "config.wsgi.application"
 
-# Application definition
+# Internationalization
+LANGUAGE_CODE = "en-us"
+TIME_ZONE = "UTC"
+USE_I18N = True
+USE_TZ = True
 
+# Apps
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -54,7 +53,6 @@ INSTALLED_APPS = [
 ]
 
 # Middleware
-
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -66,6 +64,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+# Templates
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -83,7 +82,6 @@ TEMPLATES = [
 ]
 
 # Password validation
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -99,17 +97,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-
-LANGUAGE_CODE = "en-us"
-TIME_ZONE = "UTC"
-USE_I18N = True
-USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-
+# Static files
 STATIC_URL = "static/"
 STATICFILES_DIRS = [
     BASE_DIR / "static",
@@ -141,6 +129,8 @@ MAILERS = {
     },
 }
 
+# Databases
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -163,6 +153,7 @@ DATABASES = {
 }
 
 # Security
+
 if SECURE_SSL_REDIRECT:
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True

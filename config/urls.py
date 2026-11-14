@@ -32,8 +32,6 @@ from apps.feedback.sitemaps import FeedbackIndexSitemap
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_DIR = config.settings.SECRET_DIR
-ENVIRONMENT = config.settings.ENVIRONMENT
 
 def static_root(request, path):
     """
@@ -58,7 +56,7 @@ redirect_redirects = {
     "time-difference": "/tools/time-difference/",
 }
 
-
+# Sitemaps
 sitemaps = {
     "home-index": HomeIndexSitemap,
     "home-pages": HomePagesSitemap,
@@ -68,6 +66,7 @@ sitemaps = {
     "feedback-index": FeedbackIndexSitemap,
 }
 
+# URL patterns
 urlpatterns = [
     # General Directories
     path("", include("apps.home.urls")),
@@ -87,9 +86,10 @@ urlpatterns = [
         for old_path, new_path in redirect_redirects.items()
     ],
     # System/secret directories
-    path(str(SECRET_DIR) + "admin/", admin.site.urls),
+    path(str(config.settings.SECRET_DIR) + "admin/", admin.site.urls),
 ]
 
-if ENVIRONMENT == "dev":
+# Add static fule handler when whitenoise is disabled
+if config.settings.WHITENOISE_DISABLE:
     # Add static file serving at root in development server, disable in prod
     urlpatterns.append(re_path(r"^(?P<path>[\w\-]+\.[a-zA-Z0-9]+)$", static_root))
