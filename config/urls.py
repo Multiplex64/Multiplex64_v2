@@ -15,6 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+import os
+from pathlib import Path
+import environ
 from django.conf import settings
 from django.http import Http404
 from django.contrib import admin
@@ -27,10 +30,14 @@ from apps.pricing.sitemaps import PricingIndexSitemap
 from apps.tools.sitemaps import ToolsIndexSitemap, ToolsPagesSitemap
 from apps.feedback.sitemaps import FeedbackIndexSitemap
 
-import os
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-secret_dir = os.environ.get("SECRET_DIR", "null/")
+env = environ.Env(
+    DEBUG=(bool, False)
+)
 
+SECRET_DIR = env("SECRET_DIR", cast=str)
+ENVIRONMENT = env("ENV", cast=str)
 
 def static_root(request, path):
     """
@@ -84,11 +91,8 @@ urlpatterns = [
         for old_path, new_path in redirect_redirects.items()
     ],
     # System/secret directories
-    path(secret_dir + "admin/", admin.site.urls),
+    path(str(SECRET_DIR) + "admin/", admin.site.urls),
 ]
-
-
-ENVIRONMENT = os.getenv("ENV", "prod")
 
 if ENVIRONMENT == "dev":
     # Add static file serving at root in development server, disable in prod

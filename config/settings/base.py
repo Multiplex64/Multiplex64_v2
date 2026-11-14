@@ -1,8 +1,20 @@
 import os
 from pathlib import Path
+import environ
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
+env = environ.Env(
+    # Set casting and default values
+    DEBUG=(bool, False),
+    ALLOWED_HOSTS=(list, []),
+)
+
+environ.Env.read_env(BASE_DIR / ".env")
+
+SECRET_KEY = env("SECRET_KEY")
+DEBUG = env("DEBUG")
+ALLOWED_HOSTS = env("ALLOWED_HOSTS")
 
 # Application definition
 
@@ -110,5 +122,3 @@ MAILERS = {
 
 # Site ID
 SITE_ID = 1
-
-DEBUG = os.getenv("DEBUG", "False") == "True"

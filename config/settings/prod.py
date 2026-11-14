@@ -1,23 +1,18 @@
 from .base import *
 from django.core.exceptions import ImproperlyConfigured
+import environ
 
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-def get_env_variable(var_name):
-    """attempt to find env variable, raise error if misconfigured"""
-    try:
-        return os.environ[var_name]
-    except KeyError:
-        error_msg = (
-            f"The environment variable '{var_name}' is required but was not found."
-        )
-        raise ImproperlyConfigured(error_msg)
-
+env = environ.Env(
+    ALLOWED_HOSTS=(list, ["localhost"]),
+)
 
 # allowed hosts
-ALLOWED_HOSTS = get_env_variable("ALLOWED_HOSTS").split(",")
+ALLOWED_HOSTS = env("ALLOWED_HOSTS")
 
 # Keep the secret key used in production inside .env!
-SECRET_KEY = get_env_variable("SECRET_KEY")
+SECRET_KEY = env("SECRET_KEY")
 
 # Security settings
 SECURE_SSL_REDIRECT = True
