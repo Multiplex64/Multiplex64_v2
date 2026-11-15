@@ -4,7 +4,5 @@ if [ -f ".venv/bin/activate" ]; then
     source .venv/bin/activate
 fi
 set -e
-python manage.py makemigrations --noinput
-sh scripts/deploy.sh
-python manage.py test
+sh scripts/check.sh
 echo "Tests Passed! Pushing to Git."

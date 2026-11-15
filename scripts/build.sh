@@ -16,5 +16,8 @@ rm -f .env.prod.example
 # Remove hooks
 rm -f .githooks/pre-push
 
+# Remove scripts
+rm -f scripts/check.sh
+
 # Remove this file
 rm -f scripts/build.sh
