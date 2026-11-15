@@ -8,11 +8,15 @@ Create app if one doesn't exist, as manual configuration
 
 Go to PythonAnywhere app page and set:
 
+Source Code (Optional):
+
+`~/Multiplex64` (Should expland to `/home/<user>/Multiplex64`)
+
 Working Directory:
 
 `~/Multiplex64` (Should expland to `/home/<user>/Multiplex64`)
 
-Virtualenv:
+Virtualenv (Doesn't need to exist yet):
 
 `venv` (Should expland to `/home/<user>/-virtualenvs/venv`)
 
@@ -20,10 +24,9 @@ Static files:
 
 `/static/` ===== `/users/<username>/Multiplex64/_staticfiles/`
 
+### Next Parts Break Existing Site!
 
 ## Clear Existing Files
-
-### Existing Site Stops Working Here!
 
 Bash Terminal
 
