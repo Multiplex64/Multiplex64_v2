@@ -1,6 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 cd ~/
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=$(which python3)
+source "$(which virtualenvwrapper.sh)"
 # Clone repo
 echo "Creating venv"
 mkvirtualenv --python=/usr/bin/python3.13 venv
