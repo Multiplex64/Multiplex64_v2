@@ -1,0 +1,21 @@
+#!/bin/sh
+set -e
+cd ~/
+# Clone repo
+echo "Creating venv"
+mkvirtualenv --python=/usr/bin/python3.13 venv
+echo "Cloning Repo"
+git clone --depth 1 --branch prod --single-branch https://github.com/Multiplex64/Multiplex64_v2 Multiplex64
+read -p "Create .env file, and set the static directory. Then, press ENTER."
+echo ""
+# Run setup script
+cd ~/Multiplex64
+echo "Setting Up Website"
+sh scripts/setup.sh
+# Set wsgi
+echo "Setting WSGI"
+cp ~/Multiplex64/config/wsgi.py "/var/www/${USER}_pythonanywhere_com_wsgi.py"
+# Restart server
+echo "Starting Server"
+touch "/var/www/${USER}_pythonanywhere_com_wsgi.py"
+rm -- "$0"

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Remove development-only files and directories
 
 # Remove Github folder
@@ -19,5 +19,8 @@ rm -f .githooks/pre-push
 # Remove scripts
 rm -f scripts/check.sh
 
+# Remove deploy
+rm -rf deploy/
+
 # Remove this file
-rm -f scripts/build.sh
+rm -- "$0"
