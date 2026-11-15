@@ -87,9 +87,10 @@ urlpatterns = [
     ],
     # System/secret directories
     path(str(config.settings.SECRET_DIR) + "admin/", admin.site.urls),
+    path(str(config.settings.SECRET_DIR) + "update/", include("apps.updater.urls")),
 ]
 
-# Add static fule handler when whitenoise is disabled
+# Add static file handler when whitenoise is disabled
 if config.settings.WHITENOISE_DISABLE:
     # Add static file serving at root in development server, disable in prod
     urlpatterns.append(re_path(r"^(?P<path>[\w\-]+\.[a-zA-Z0-9]+)$", static_root))

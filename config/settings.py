@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "apps.tools",
     "apps.feedback",
     "apps.pricing",
+    "apps.updater",
 ]
 
 # Middleware
