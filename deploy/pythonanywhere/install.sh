@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 cd ~/
+SCRIPT_PATH="$(realpath "$0")"
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 source "$(which virtualenvwrapper.sh)"
@@ -21,4 +22,4 @@ cp ~/Multiplex64/config/wsgi.py "/var/www/${USER}_pythonanywhere_com_wsgi.py"
 # Restart server
 echo "Starting Server"
 touch "/var/www/${USER}_pythonanywhere_com_wsgi.py"
-rm -- "$0"
+rm -- SCRIPT_PATH

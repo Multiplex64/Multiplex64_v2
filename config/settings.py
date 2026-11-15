@@ -113,16 +113,11 @@ STORAGES = {
     },
 }
 
-# Disable whitenoise during development
-if WHITENOISE_DISABLE:
-    MIDDLEWARE.remove("whitenoise.middleware.WhiteNoiseMiddleware")
-    STORAGES["staticfiles"] = {
-        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"
-    }
-
+# User Uploaded Media
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "_data" / "media"
 
 # Email
-
 MAILERS = {
     "default": {
         "BACKEND": "django.core.mail.backends.console.EmailBackend",
@@ -130,7 +125,6 @@ MAILERS = {
 }
 
 # Databases
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -153,7 +147,6 @@ DATABASES = {
 }
 
 # Security
-
 if SECURE_SSL_REDIRECT:
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
@@ -161,3 +154,10 @@ if SECURE_SSL_REDIRECT:
     SECURE_HSTS_SECONDS = 31536000  # 1 year
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
+
+# Disable whitenoise during development
+if WHITENOISE_DISABLE:
+    MIDDLEWARE.remove("whitenoise.middleware.WhiteNoiseMiddleware")
+    STORAGES["staticfiles"] = {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"
+    }
