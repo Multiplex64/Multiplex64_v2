@@ -20,6 +20,7 @@ Open new console to regenerate files
 Copy contents of [install.sh](install.sh) to `~/install.sh`
 
 Bash Terminal
+
 ```
 sh install.sh
 ```
@@ -28,7 +29,17 @@ When prompted:
 
 Set variables in `.env`
 
-Go to PythonAnywhere app page and set static files:
+Go to PythonAnywhere app page and set:
+
+Working Directory:
+
+`~/Multiplex64` (Should expland to `/home/<user>/Multiplex64`)
+
+Virtualenv:
+
+`venv` (Should expland to `/home/<user>/-virtualenvs/venv`)
+
+Static files:
 
 `/static/` ===== `/users/<username>/Multiplex64/_staticfiles/`
 

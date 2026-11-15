@@ -6,7 +6,7 @@ echo "Creating venv"
 mkvirtualenv --python=/usr/bin/python3.13 venv
 echo "Cloning Repo"
 git clone --depth 1 --branch prod --single-branch https://github.com/Multiplex64/Multiplex64_v2 Multiplex64
-read -p "Create .env file, and set the static directory. Then, press ENTER."
+read -p "Create .env file, set working directory, venv setting, and static directory. Then, press ENTER."
 echo ""
 # Run setup script
 cd ~/Multiplex64
