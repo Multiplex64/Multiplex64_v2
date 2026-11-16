@@ -5,6 +5,7 @@ Global Stylesheet for most pages
 /* Root variables */
 :root {
   --font-body: "Roboto", "Arial", sans-serif;
+  --color-body: black;
 }
 
 /* Fonts */
@@ -126,7 +127,7 @@ button {
 hr {
   height: 1px;
   border: 0;
-  background-color: #000;
+  background-color: var(--color-body);
 }
 
 pre {
@@ -225,7 +226,7 @@ main {
   border-top: solid 1px;
   border-bottom: solid 1px;
   display: flex;
-  color: black;
+  color: var(--color-body);
   overflow: hidden;
   align-items: center;
 }
@@ -241,7 +242,7 @@ main {
   font-size: 1.5rem;
   overflow: hidden;
   position: fixed;
-  color: black;
+  color: var(--color-body);
   display: block;
   box-sizing: border-box;
   line-height: calc(2rem - 2px);
