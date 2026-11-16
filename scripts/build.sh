@@ -18,6 +18,11 @@ rm -f .githooks/pre-push
 
 # Remove scripts
 rm -f scripts/check.sh
+rm -f scripts/setup.sh
+rm -f scripts/update.sh
+
+# Move pythonanywhere scripts
+cp deploy/pythonanywhere/update.sh scripts/update.sh
 
 # Remove deploy
 rm -rf deploy/

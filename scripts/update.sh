@@ -1,6 +1,5 @@
 #!/bin/sh
-# Run when updating prod server
+# Run when updating dev environment
 set -e
-git fetch --depth 1
-git reset --hard origin/prod
+git pull origin main
 sh scripts/deploy.sh
