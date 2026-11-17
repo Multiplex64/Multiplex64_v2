@@ -5,4 +5,4 @@ if [ -f ".venv/bin/activate" ]; then
 elif [ -f ".venv/Scripts/activate" ]; then
     source ".venv/Scripts/activate"
 fi
-sh scripts/check.sh
+./scripts/check.sh

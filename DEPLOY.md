@@ -9,7 +9,7 @@ Clone to local folder
 To Initialize:
 
 ```
-sh scripts/setup.sh
+./scripts/setup.sh
 ```
 
 set variables in `.env`

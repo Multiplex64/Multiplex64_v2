@@ -15,7 +15,7 @@ echo ""
 # Run setup script
 cd ~/Multiplex64
 echo "Setting Up Website"
-sh scripts/deploy.sh
+./scripts/deploy.sh
 # Set wsgi
 echo "Setting WSGI"
 cp ~/Multiplex64/config/wsgi.py "/var/www/${USER}_pythonanywhere_com_wsgi.py"

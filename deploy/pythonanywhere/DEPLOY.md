@@ -46,7 +46,7 @@ Copy contents of [install.sh](install.sh) to `~/install.sh`
 Bash Terminal
 
 ```
-bash install.sh
+./install.sh
 ```
 
 When prompted:
@@ -60,7 +60,7 @@ Finish install.sh task to complete. The site should be running.
 Bash Terminal at `~/Multiplex64/`
 
 ```
-sh scripts/update.sh
+./scripts/update.sh
 ```
 
 Restart the web app
