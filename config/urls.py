@@ -18,7 +18,6 @@ Including another URLconf
 import os
 from pathlib import Path
 import config.settings
-from django.conf import settings
 from django.http import Http404
 from django.contrib import admin
 from django.urls import include, path, re_path
@@ -31,19 +30,6 @@ from apps.tools.sitemaps import ToolsIndexSitemap, ToolsPagesSitemap
 from apps.feedback.sitemaps import FeedbackIndexSitemap
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-def static_root(request, path):
-    """
-    Serves files from static/root/ during development
-    """
-    document_root = os.path.join(settings.BASE_DIR, "static_root/")
-
-    try:
-        return serve(request, path, document_root=document_root)
-    except Http404:
-        raise Http404("File not found.")
-
 
 # Permanent redirects
 redirect_redirects = {
@@ -93,4 +79,10 @@ urlpatterns = [
 # Add static file handler when whitenoise is disabled
 if config.settings.WHITENOISE_DISABLE:
     # Add static file serving at root in development server, disable in prod
-    urlpatterns.append(re_path(r"^(?P<path>[\w\-]+\.[a-zA-Z0-9]+)$", static_root))
+    urlpatterns.append(
+        re_path(
+            r"^(?P<path>[\w\-\/\.]+)$",
+            serve,
+            {"document_root": BASE_DIR / "static_root"},
+        )
+    )
