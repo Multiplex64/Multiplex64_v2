@@ -2,16 +2,15 @@ name: Deploy to prod branch
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 permissions:
   contents: write
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -19,34 +18,37 @@ jobs:
         python-version: [3.13]
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Configure Git
-      run: |
-        git config user.name "GitHub Actions Bot"
-        git config user.email "actions@github.com"
-    - name: Install Dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Create Dummy Test Files
-      run: |
-        # Create .env
-        cp .env.prod.example .env
-    - name: Strip Development Files
-      run: scripts/build.sh
-    - name: Run Tests
-      run: |
-        python manage.py test
-        # Remove dummy files
-        rm -f .env
-    - name: Commit and Push to Prod Branch
-      run: |
-        git checkout --orphan prod
-        git add -A
-        git commit -m "Production build from ${GITHUB_SHA}"
-        # Force push to overwrite the old prod branch entirely
-        git push -f origin prod
+      - uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Configure Git
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Create Dummy Test Files
+        run: |
+          # Create .env
+          cp .env.prod.example .env
+          # Create data folder
+          mkdir -p _data/{media,logs}/
+      - name: Strip Development Files
+        run: scripts/build.sh
+      - name: Run Tests
+        run: |
+          python manage.py test
+          # Remove dummy files
+          rm -f .env
+          rm -rf _data/
+      - name: Commit and Push to Prod Branch
+        run: |
+          git checkout --orphan prod
+          git add -A
+          git commit -m "Production build from ${GITHUB_SHA}"
+          # Force push to overwrite the old prod branch entirely
+          git push -f origin prod

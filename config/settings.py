@@ -173,7 +173,6 @@ LOGGING = {
         },
     },
     "loggers": {
-        # Captures Django's internal errors (including 500 server errors)
         "django": {
             "handlers": ["error_file"],
             "level": "ERROR",
