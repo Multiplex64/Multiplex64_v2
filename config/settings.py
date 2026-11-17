@@ -63,6 +63,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "config.middleware.RequestLoggingMiddleware",
 ]
 
 # Templates
@@ -145,6 +146,50 @@ DATABASES = {
             "transaction_mode": "IMMEDIATE",  # Prevents deadlocks by locking early
         },
     }
+}
+
+# Logging
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "[{asctime}] {levelname} {name} {module}:{lineno} - {message}",
+            "style": "{",
+        },
+    },
+    "handlers": {
+        "error_file": {
+            "level": "ERROR",
+            "class": "logging.FileHandler",
+            "filename": BASE_DIR / "_data" / "logs" / "errors.log",
+            "formatter": "verbose",
+        },
+        "requests_file": {
+            "level": "INFO",
+            "class": "logging.FileHandler",
+            "filename": BASE_DIR / "_data" / "logs" / "requests.log",
+            "formatter": "verbose",
+        },
+    },
+    "loggers": {
+        # Captures Django's internal errors (including 500 server errors)
+        "django": {
+            "handlers": ["error_file"],
+            "level": "ERROR",
+            "propagate": True,
+        },
+        "request_logger": {
+            "handlers": ["requests_file"],
+            "level": "INFO",
+            "propagate": False,
+        },
+    },
+    # Catch-all root logger for errors from your custom apps and third-party packages
+    "root": {
+        "handlers": ["error_file"],
+        "level": "ERROR",
+    },
 }
 
 # Security
