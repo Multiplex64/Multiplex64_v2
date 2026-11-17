@@ -13,8 +13,8 @@ rm -f DEPLOY.md
 rm -f .env.dev.example
 rm -f .env.prod.example
 
-# Remove hooks
-rm -f .githooks/pre-push
+# Remove dev hooks
+rm -f .githooks/
 
 # Remove scripts
 rm -f scripts/check.sh
