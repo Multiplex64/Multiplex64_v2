@@ -32,12 +32,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
            mkdir -p _data/{media,logs}/
-      - name: Run Dev Tests
+      - name: Run Tests
         run: |
           cp .env.dev.example .env
           python manage.py test
           ./scripts/test-dev.sh
-      - name: Run Prod Tests
-        run: |
-          cp .env.prod.example .env
-          ./scripts/test-prod.sh

@@ -1,4 +1,4 @@
-name: Deploy to prod branch
+name: Deploy to prod Branch
 
 on:
   workflow_run:
@@ -42,7 +42,7 @@ jobs:
         run: scripts/build.sh
       - name: Run Tests
         run: |
-          python manage.py test
+          ./scripts/test-prod.sh
       - name: Commit and Push to Prod Branch
         run: |
           git checkout --orphan prod
