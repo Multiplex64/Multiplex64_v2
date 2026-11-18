@@ -1,10 +1,11 @@
 name: Deploy to prod branch
 
 on:
-  push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+  workflow_run:
+    workflows: ["Verify Main Branch"]
+    types:
+      - completed
+    branches: [ main ]
 
 permissions:
   contents: write
@@ -42,9 +43,6 @@ jobs:
       - name: Run Tests
         run: |
           python manage.py test
-          # Remove dummy files
-          rm -f .env
-          rm -rf _data/
       - name: Commit and Push to Prod Branch
         run: |
           git checkout --orphan prod

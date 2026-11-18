@@ -1,6 +1,7 @@
 #!/bin/sh
 # Make migrations and run tests before pushing
 set -e
-python manage.py makemigrations --noinput
 ./scripts/deploy.sh
+python manage.py check --deploy --fail-level WARNING
+python manage.py makemigrations --check --dry-run
 python manage.py test

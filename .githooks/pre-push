@@ -5,4 +5,5 @@ if [ -f ".venv/bin/activate" ]; then
 elif [ -f ".venv/Scripts/activate" ]; then
     source ".venv/Scripts/activate"
 fi
+python manage.py makemigrations --noinput
 ./scripts/check.sh

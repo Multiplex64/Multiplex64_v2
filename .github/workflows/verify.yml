@@ -1,0 +1,44 @@
+name: Verify Main Branch
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.13]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Configure Git
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+           mkdir -p _data/{media,logs}/
+      - name: Run Dev Tests
+        run: |
+          cp .env.dev.example .env
+          python manage.py test
+      - name: Run Prod Tests
+        run: |
+          cp .env.prod.example .env
+          python manage.py check --deploy --fail-level WARNING
+          python manage.py makemigrations --check --dry-run
+          python manage.py test
