@@ -5,6 +5,7 @@ on:
     workflows: ["Verify Main Branch"]
     types:
       - completed
+    branches: ["main"]
 
 permissions:
   contents: write
