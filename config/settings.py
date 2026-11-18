@@ -15,7 +15,7 @@ if ENVIRONMENT == "dev":
     ALLOWED_HOSTS = env.list(
         "ALLOWED_HOSTS", default=[".localhost", "127.0.0.1", "[::1]"]  # type: ignore[arg-type]
     )
-    SECRET_KEY = env.str("SECRET_KEY", default="insecure-dev-key-never-use-in-prod")
+    SECRET_KEY = env.str("SECRET_KEY", default="insecure-dev-key-never-use-in-prod-0123456789ABCDEF")
     SECRET_DIR = env.str("SECRET_DIR", default="null/")
 else:
     DEBUG = False
