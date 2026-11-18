@@ -16,7 +16,6 @@ rm -f .env.prod.example
 rm -f .githooks/
 
 # Remove scripts
-rm -f scripts/check.sh
 rm -f scripts/setup.sh
 rm -f scripts/update.sh
 

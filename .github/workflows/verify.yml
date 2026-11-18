@@ -36,9 +36,8 @@ jobs:
         run: |
           cp .env.dev.example .env
           python manage.py test
+          ./scripts/test.sh
       - name: Run Prod Tests
         run: |
           cp .env.prod.example .env
-          python manage.py check --deploy --fail-level WARNING
-          python manage.py makemigrations --check --dry-run
-          python manage.py test
+          ./scripts/test.sh
