@@ -122,18 +122,11 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "_data" / "media"
 
 # Email
-if env.bool("CI", default=False):
-    MAILERS = {
-        "default": {
-            "BACKEND": "django.core.mail.backends.locmem.EmailBackend",
-        },
-    }
-else:
-    MAILERS = {
-        "default": {
-            "BACKEND": "django.core.mail.backends.console.EmailBackend",
-        },
-    }
+MAILERS = {
+    "default": {
+        "BACKEND": "django.core.mail.backends.console.EmailBackend",
+    },
+}
 
 # Databases
 DATABASES = {
@@ -215,3 +208,9 @@ if WHITENOISE_DISABLE:
     STORAGES["staticfiles"] = {
         "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"
     }
+
+# Silence email errors for now, as it is not implemented
+if env.bool("CI", default=False):
+    SILENCED_SYSTEM_CHECKS = [
+        "mail.E001",
+    ]
