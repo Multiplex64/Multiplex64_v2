@@ -36,8 +36,8 @@ jobs:
         run: |
           cp .env.dev.example .env
           python manage.py test
-          ./scripts/test.sh
+          ./scripts/test-dev.sh
       - name: Run Prod Tests
         run: |
           cp .env.prod.example .env
-          ./scripts/test.sh
+          ./scripts/test-prod.sh
