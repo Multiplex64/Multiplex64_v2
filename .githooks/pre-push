@@ -1,9 +1,9 @@
 #!/bin/sh
 set -e
 if [ -f ".venv/bin/activate" ]; then
-    source .venv/bin/activate
+    . .venv/bin/activate
 elif [ -f ".venv/Scripts/activate" ]; then
-    source ".venv/Scripts/activate"
+    . .venv/Scripts/activate
 fi
 python manage.py makemigrations --noinput
 ./scripts/deploy.sh
