@@ -18,6 +18,7 @@ rm -f .githooks/
 # Remove scripts
 rm -f scripts/setup.sh
 rm -f scripts/update.sh
+rm -f scripts/test-dev.sh
 
 # Move pythonanywhere scripts
 cp deploy/pythonanywhere/update.sh scripts/update.sh
