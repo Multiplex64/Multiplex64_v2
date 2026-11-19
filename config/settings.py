@@ -7,7 +7,7 @@ env = environ.Env()
 environ.Env.read_env(BASE_DIR / ".env", overwrite=True)
 
 # Set global values
-ENVIRONMENT = env.str("ENV", default="prod")
+ENVIRONMENT = env.str("ENV")
 if ENVIRONMENT == "dev":
     DEBUG = env.bool("DEBUG", default=True)
     SECURE_SSL_REDIRECT = env.bool("SECURE_SSL_REDIRECT", default=False)
