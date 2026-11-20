@@ -1,0 +1,85 @@
+{% extends base_template|default:"base.html" %}
+{% block title %}HTML Playground - Multiplex64{% endblock %}
+{% block content %}
+<div class="_maxheight" style="display:grid;grid-template-rows:64px auto;margin:0;padding:0;">
+  <div class="_standard">
+    <a href="{% url 'tools:index' %}">Tools</a> / <h2 style="display: inline-block;">HTML Playground</h2>
+  </div>
+  <div style="display:flex;width: 100%;">
+    <div style="display:grid;grid-template-rows:24px 1fr;width:512px;" id="left">
+      <div>
+        HTML Input -
+        <button id="button-action">Go!</button>
+        <label><input type="checkbox" id="check-auto" checked>Auto</label>
+      </div>
+      <textarea id="html-input"
+        style="height:100%;resize:none;font-family: 'Courier New', Courier, monospace;">Hello, world!</textarea>
+    </div>
+    <div style="background-color: black;width: 4px;border:4px solid white;height: calc(100% - 8px);cursor: col-resize;"
+      id="center"></div>
+    <div style="display:grid;grid-template-rows:24px 1fr;flex: 1;" id="right">
+      <div>
+        Output -
+        <button onclick="document.getElementById('html-iframe').requestFullscreen();"> Fullscreen </button>
+        <button id="new-tab-btn">Open in New Window</button>
+      </div>
+      <div style="height:100%;">
+        <iframe allow="fullscreen" id="html-iframe" style="height:100%;resize:none;"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+  (function () {
+    const checkAuto = document.getElementById('check-auto')
+    const buttonAction = document.getElementById('button-action')
+    const inputMain = document.getElementById('html-input')
+    const output = document.getElementById("html-iframe")
+    function insertHTML(manual) {
+      if (manual || checkAuto.checked) {
+        output.srcdoc = document.getElementById("html-input").value;
+      }
+    }
+    const bar = document.getElementById("center");
+    const left = document.getElementById("left");
+    bar.dataset.mousedown = false;
+
+    bar.addEventListener('mousedown', (e) => {
+      bar.dataset.mousedown = true;
+    })
+
+    document.addEventListener('mousemove', (e) => {
+      if (bar.dataset.mousedown == 'false') return;
+      document.getElementById('_main').style.userSelect = 'none';
+      document.getElementById('_main').style.webkitUserSelect = 'none';
+      document.getElementById("html-iframe").style.pointerEvents = "none";
+      left.style.width = Math.max((e.clientX - left.getBoundingClientRect().left), 64) + "px";
+    })
+
+    document.addEventListener('mouseup', () => {
+      if (bar.dataset.mousedown == 'true') {
+        document.getElementById('_main').style.userSelect = 'auto';
+        document.getElementById('_main').style.webkitUserSelect = 'auto';
+        bar.dataset.mousedown = false;
+        document.getElementById("html-iframe").style.pointerEvents = "auto";
+      }
+    })
+
+    document.getElementById('new-tab-btn').addEventListener('click', () => {
+      const myCode = output.srcdoc
+      // Create a blob representing the HTML file
+      const blob = new Blob([myCode], { type: 'text/html' });
+      const blobUrl = URL.createObjectURL(blob);
+
+      // Open the blob URL in a new tab
+      window.open(blobUrl, '_blank');
+    })
+
+    insertHTML(true);
+    inputMain.addEventListener("input", () => insertHTML());
+    buttonAction.addEventListener("click", () => insertHTML(true));
+  })();
+</script>
+{% endblock %}

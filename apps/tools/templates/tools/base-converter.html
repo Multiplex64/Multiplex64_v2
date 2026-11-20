@@ -1,0 +1,56 @@
+{% extends base_template|default:"base.html" %}
+{% block title %}Base Converter - Multiplex64{% endblock %}
+{% block content %}
+<div class="_standard">
+  <a href="{% url 'tools:index' %}">Tools</a> / <h2 style="display: inline-block;">Base Converter</h2>
+  <br><br>
+  Warning: Currently does not support decimals, or very large numbers. Only accepts bases within 2 and 36.
+  <br><br>
+  Input
+  <br>
+  <textarea id="input-main">100</textarea>
+  <br>
+  Input Base (Radix)
+  <br>
+  <input id="base-in" type="number" value="10" min="2" max="36">
+  <br>
+  Output Base (Radix)
+  <br>
+  <input id="base-out" type="number" value="2" min="2" max="36">
+  <br><br>
+  <button id="button-action">Go!</button>
+  <label><input type="checkbox" id="check-auto" checked>Auto</label>
+  <br><br>
+  Output
+  <br>
+  <textarea id="output"></textarea>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+  (function () {
+    const inputMain = document.getElementById("input-main")
+    const baseIn = document.getElementById("base-in")
+    const baseOut = document.getElementById("base-out")
+    const checkAuto = document.getElementById('check-auto')
+    const buttonAction = document.getElementById('button-action')
+    const output = document.getElementById("output")
+    function convertBase(manual_action) {
+      console.log(manual_action)
+      if (manual_action || checkAuto.checked) {
+        try {
+          output.value = parseInt(inputMain.value, baseIn.value).toString(baseOut.value)
+        } catch (error) {
+          output.value = "Error: " + error.message
+        }
+      }
+    }
+    convertBase(true);
+    inputMain.addEventListener("input", () => convertBase())
+    baseIn.addEventListener("input", () => convertBase())
+    baseOut.addEventListener("input", () => convertBase())
+    buttonAction.addEventListener("click", () => convertBase(true))
+  })();
+</script>
+{% endblock %}

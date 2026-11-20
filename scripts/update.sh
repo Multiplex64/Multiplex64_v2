@@ -1,0 +1,7 @@
+#!/bin/sh
+# Run when updating prod server
+set -e
+git fetch --depth 1
+git reset --hard origin/prod
+./scripts/deploy.sh
+touch "/var/www/${USER}_pythonanywhere_com_wsgi.py"
